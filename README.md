@@ -1,3 +1,7 @@
+# PABW — Assyifa Nur Fauziyah Jaelani — 25523200
+
+Repo ini memuat pekerjaan mata kuliah Pengembangan Aplikasi Berbasis Web, satu folder untuk setiap pertemuan.
+
 # Praktikum P04 — Design Token untuk Halaman Profil Saya
 
 Starter: `kerangka-profil.html`. Berkas ini sudah lengkap dan sudah lolos
@@ -32,7 +36,7 @@ strukturnya — tampilan diubah dari berkas CSS.
 ## Rencana Arah Visual (Lembar A)
 
 - **Nama / NIM:** Assyifa Nur Fauziyah Jaelani - 25523200
-- **Arah Visual:** Cerah, ramah, dan serba soft (Ceria, Lembut & Modern)
+- **Arah Visual:** Cerah, ramah, dan serba soft (ceria, lembut & modern)
 - **Kesan yang Dituju:** Tampilan terasa ringan, bersih, dan nyaman dibaca
 - **Warna Utama:** `#007BBE` (Biru Utama) dan `#7CB9E8` (Aksen Biru Muda) disesuaikan dari nuansa foto profil, terinspirasi dari design figma yang dulu pernah saya buat dari projek lomba
 - **Warna Netral Terang:** `#E1EDFC` (Latar halaman) dan `#FFFFFF` (Latar kartu)
@@ -40,6 +44,9 @@ strukturnya — tampilan diubah dari berkas CSS.
 - **Ukuran Huruf:** Isi `1rem` (16px), Judul (`h2`) `1.5rem` (24px), Judul Utama (`h1`) `2.25rem` (36px)
 - **Jarak Dasar:** `1rem` untuk jarak standar dan `1.5rem` untuk pemisah antar bagian
 - **Radius & Bayangan:** Radius `0.75rem` (sudut membulat) dan bayangan tipis `0 2px 8px rgba(0, 123, 190, 0.08)`
+
+## Catatan penggunaan AI
+Menggunakan bantuan AI untuk diskusi penentuan skala tipografi responsif (rem) dan token warna.
 
 ## Evaluasi yang dilaporkan
 
