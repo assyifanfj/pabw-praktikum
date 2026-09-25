@@ -45,6 +45,25 @@ strukturnya — tampilan diubah dari berkas CSS.
 - **Jarak Dasar:** `1rem` untuk jarak standar dan `1.5rem` untuk pemisah antar bagian
 - **Radius & Bayangan:** Radius `0.75rem` (sudut membulat) dan bayangan tipis `0 2px 8px rgba(0, 123, 190, 0.08)`
 
+## Design token halaman profil (Lembar C.4)
+
+- Berkas gaya yang akan dibuat: `tokens.css`, `base.css`, `layout.css`, `komponen.css`, `tema.css`
+- Warna utama: `#007BBE`, dipilih karena memberikan kesan profesional, modern.
+
+### Token yang saya tetapkan
+
+| Token | Nilai | Untuk apa |
+| :--- | :--- | :--- |
+| `--color-primary` | `#007BBE` | Tombol, tautan, penanda |
+| `--color-fg` | `#1E293B` | Warna teks utama |
+| `--color-bg` | `#E1EDFC` | Latar halaman |
+| `--color-surface` | `#FFFFFF` | Latar kartu dan panel |
+| `--color-border` | `#7CB9E8` | Garis pemisah dan tepi |
+| `--radius-md` | `0.75rem` | Sudut membulat kartu & tombol |
+| `--space-4` | `1rem` | Jarak standar antar elemen |
+
+Kriteria selesai saya: mengubah `--color-primary` di satu baris `tokens.css` harus mengubah warna tombol, tautan, judul, dan garis fokus di seluruh halaman.
+
 ## Catatan penggunaan AI
 Menggunakan bantuan AI untuk diskusi penentuan skala tipografi responsif (rem) dan token warna.
 
