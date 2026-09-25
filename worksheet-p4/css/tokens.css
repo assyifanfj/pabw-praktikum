@@ -1,0 +1,41 @@
+
+:root {
+    --color-blue-primary: #007BBE;
+    --color-blue-light: #7CB9E8;
+    --color-blue-bg: #E1EDFC;
+    --color-blue-focus: #005B8E;
+    --color-slate-dark: #1E293B;
+    --color-white: #FFFFFF;
+    --color-red-danger: #DC2626;
+
+  /* Spacing */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-6: 1.5rem;
+
+  /* Radius & Bayangan */
+    --radius-md: 0.75rem;
+    --radius-full: 999px;
+    --shadow-1: 0 2px 8px rgba(0, 123, 190, 0.08);
+
+  /* Skala Tipografi */
+    --text-sm: 0.875rem;
+    --text-md: 1rem;
+    --text-xl: 1.5rem;
+    --text-3xl: 2.25rem;
+}
+
+:root {
+    --color-bg: var(--color-blue-bg);
+    --color-fg: var(--color-slate-dark);
+    --color-surface: var(--color-white);
+    --color-border: var(--color-blue-light);
+    --color-primary: var(--color-blue-primary);
+    --color-danger: var(--color-red-danger);
+    --color-focus: var(--color-blue-focus);
+
+    --card-pad: var(--space-4);
+    --section-gap: var(--space-6);
+}
