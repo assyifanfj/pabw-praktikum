@@ -1,0 +1,70 @@
+/* E.1 Reset Ringan & Box-Sizing */
+*, *::before, *::after {
+    box-sizing: border-box; 
+}
+
+* {
+    margin: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* E.2 & E.3 Tipografi & Warna Dasar Halaman */
+html {
+    font-size: 100%;
+}
+
+body {
+    font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+    font-size: var(--text-md);
+    line-height: 1.6;
+    color: var(--color-fg);
+    background-color: var(--color-bg);
+    padding: var(--space-4);
+}
+
+h1 {
+    font-size: var(--text-3xl);
+    line-height: 1.15;
+}
+
+h2 {
+    font-size: var(--text-xl);
+    line-height: 1.25;
+}
+
+h3 {
+    font-size: var(--text-md);
+}
+
+main p {
+    max-width: 60ch;
+}
+
+/* Link dan aksesibilitas */
+a {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+a:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+}
+
+.lewati {
+    position: absolute;
+    top: -999px;
+    left: 0;
+    background: var(--color-surface);
+    padding: var(--space-2);
+    z-index: 100;
+}
+
+.lewati:focus {
+    top: 0;
+}
