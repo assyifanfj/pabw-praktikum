@@ -21,30 +21,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
   <!-- ISI 1 — judul tab dan hasil pencarian. Ganti dengan nama Anda. -->
-  <title>Profil Nama Anda — PABW 2026/2027</title>
+  <title>Profil Assyifa Nur Fauziyah Jaelani — PABW 2026/2027</title>
   <meta name="description" content="Halaman profil mahasiswa PABW: tentang saya, karya, dan kontak.">
 
   <!-- LEMBAR D — buat lima berkas di folder css/, lalu buka komentar ini.
        URUTAN PEMUATAN MENENTUKAN CASCADE: tokens, base, layout, komponen, tema.
        Lapisan paling bawah menang tanpa perlu !important. -->
-  <!-- <link rel="stylesheet" href="css/tokens.css"> -->
-  <!-- <link rel="stylesheet" href="css/base.css"> -->
-  <!-- <link rel="stylesheet" href="css/layout.css"> -->
-  <!-- <link rel="stylesheet" href="css/komponen.css"> -->
-  <!-- <link rel="stylesheet" href="css/tema.css"> -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/komponen.css">
+  <link rel="stylesheet" href="css/tema.css">
 </head>
 <body>
   <a class="lewati" href="#utama">Lewati ke konten utama</a>
 
   <header class="kepala">
     <!-- ISI 2 — nama Anda, atau nama panggilan yang Anda pakai. -->
-    <h1>Nama Anda</h1>
+    <h1>Assyifa Nur Fauziyah Jaelani</h1>
     <!-- ISI 3 — satu kalimat tentang diri Anda. -->
-    <p class="tagline">Mahasiswa Informatika yang sedang belajar membangun web.</p>
+    <p class="tagline">Mahasiswa Informatika UII, Awardee Beasiswa OSC, dan memiliki kemampuan di bidang UI/UX serta Copywriting &amp; Media Kreatif.</p>
     <nav aria-label="Navigasi utama">
       <ul>
         <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#kutipan">Prinsip</a></li>
         <li><a href="#karya">Karya</a></li>
+        <li><a href="#galeri">Galeri Karya</a></li>
+        <li><a href="#sedang-dikerjakan">Aktivitas</a></li>
+        <li><a href="#keahlian">Keahlian</a></li>
+        <li><a href="#pengalaman">Pengalaman</a></li>
+        <li><a href="#pencapaian">Pencapaian</a></li>
         <li><a href="#kontak">Kontak</a></li>
       </ul>
     </nav>
@@ -58,17 +64,17 @@
       <figure class="foto">
         <!-- ISI 4 — pakai foto Anda sendiri dengan nama berkas yang sama,
              atau biarkan berkas contoh apa adanya. -->
-        <img src="media/foto-profil.jpg"
-             alt="Foto diri Nama Anda memakai kemeja putih."
-             width="480" height="480" loading="lazy">
-        <figcaption>Foto profil — ganti dengan milik Anda sendiri.</figcaption>
+        <img src="media/Assyifa.jpg"
+             alt="Foto diri Assyifa Nur Fauziyah Jaelani."
+             width="360" height="480" loading="lazy">
+        <figcaption>Foto profil — Assyifa Nur Fauziyah Jaelani.</figcaption>
       </figure>
 
       <!-- ISI 5 — dua sampai tiga kalimat: asal, minat, dan hal yang
            sedang Anda pelajari. -->
-      <p>Saya mahasiswa Program Studi Informatika Universitas Islam Indonesia.
-         Saya tertarik pada pengembangan web, khususnya bagian tampilan,
-         karena di sana keputusan teknis langsung terlihat hasilnya.</p>
+      <p>Saya adalah mahasiswa Informatika Universitas Islam Indonesia dan awardee Online Scholarship Competition (OSC).
+         Saya berfokus pada perancangan antarmuka UI/UX yang berorientasi pada kebutuhan pengguna serta pembuatan konten media kreatif (copywriter).
+         Saat ini saya aktif memperdalam keterampilan tentang UI/UX, copywriting, serta berbagai hal mengenai perkembangan teknologi dan Informatika (seperti koding, AI, data science, dan lain sebagainya).</p>
 
       <table>
         <!-- ISI 6 — judul tabel dan isi minimal tiga baris. -->
@@ -83,37 +89,133 @@
         <tbody>
           <tr>
             <th scope="row">Praktikum PABW</th>
-            <td>Peserta</td>
+            <td>Peserta Praktikum</td>
             <td><time datetime="2026-09">September 2026</time></td>
           </tr>
           <tr>
-            <th scope="row">Kelas Terbuka Kampus</th>
-            <td>Peserta</td>
-            <td><time datetime="2026-10">Oktober 2026</time></td>
+            <th scope="row">Tim Visual &amp; Media Kampus UII</th>
+            <td>Photo and Video Talent &amp; Content Writer</td>
+            <td><time datetime="2026">2026</time></td>
           </tr>
           <tr>
-            <th scope="row">Organisasi kemahasiswaan</th>
-            <td>Anggota</td>
+            <th scope="row">Lomba Gemastik 2026</th>
+            <td>UI/UX Designer</td>
             <td><time datetime="2026">2026</time></td>
           </tr>
         </tbody>
       </table>
     </section>
 
+    <!-- PILIHAN 5: KUTIPAN (Setelah section tentang saya) -->
+    <aside id="kutipan">
+      <h2>Prinsip &amp; Kutipan Favorit</h2>
+      <blockquote>
+        <p>"The future looks bright and I will keep on shining."</p>
+        <cite>— Assyifa</cite>
+      </blockquote>
+      <blockquote>
+        <p>"Success is not in what you have, but who you are."</p>
+        <cite>— Bo Bennett</cite>
+      </blockquote>
+    </aside>
+
     <section id="karya">
       <h2>Karya saya</h2>
       <!-- ISI 7 — tiga karya, proyek, atau hal yang pernah Anda buat.
            Boleh tugas kuliah, karya pribadi, atau hobi. -->
       <ul>
-        <li>Halaman Kelas Terbuka Kampus — praktikum P03, HTML semantik dan form.</li>
-        <li>Karya kedua Anda — sebutkan apa dan tahunnya.</li>
-        <li>Karya ketiga Anda — sebutkan apa dan tahunnya.</li>
+        <li>Desain Antarmuka Aplikasi Mobile — Proyek Semester 1 Informatika UII.</li>
+        <li>Aplikasi E-Commerce Desktop "CraftFlow" berbasis Java &amp; Scene Builder — Proyek Semester 2 Informatika UII.</li>
+        <li>Desain Antarmuka Aplikasi Mobile untuk Lomba Gemastik 2026 Kategori UI/UX berjudul Kala: Aplikasi AI Companion Berbasis Refleksi Perilaku untuk Mengatasi Distraksi Digital dan Burnout.</li>
       </ul>
     </section>
 
-    <section id="kontak">
+<!-- PILIHAN 2: GALERI KARYA (Setelah section karya) -->
+    <section id="galeri">
+      <h2>Galeri Karya</h2>
+      <ul>
+        <li>
+          <figure>
+            <img src="media/ProyekSem1Assyifa.jpg"
+                 alt="Foto Assyifa bersama kelompok mempresentasikan desain antarmuka aplikasi mobile proyek semester 1."
+                 width="400" height="388" loading="lazy">
+            <figcaption>Presentasi Proyek Semester 1 — Desain Antarmuka Aplikasi Mobile.</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <img src="media/ProyekSem2CraftFlowAssyifa.jpg"
+                 alt="Foto Assyifa bersama kelompok menampilkan proyek aplikasi E-Commerce Desktop CraftFlow."
+                 width="400" height="523" loading="lazy">
+            <figcaption>Pameran Proyek Semester 2 — Aplikasi E-Commerce Desktop "CraftFlow".</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <img src="media/KalaAssyifa.jpg"
+                 alt="Tampilan desain antarmuka aplikasi mobile Kala AI Companion untuk Lomba Gemastik 2026."
+                 width="400" height="269" loading="lazy">
+            <figcaption>Desain UI/UX "Kala" — Aplikasi AI Companion (Gemastik 2026).</figcaption>
+          </figure>
+        </li>
+      </ul>
+    </section>
+
+    <!-- PILIHAN 6: SEDANG DIKERJAKAN (Setelah section karya/galeri) -->
+    <article id="sedang-dikerjakan">
+      <h2>Sedang Dikerjakan &amp; Aktivitas Aktif</h2>
+      
+      <h3>Excellent Community UII</h3>
+      <p>Mengikuti pelatihan kepemimpinan, seminar akademik, kegiatan orientasi dan sosial sebagai perwakilan penerima beasiswa, serta berbagai seminar pengembangan diri.</p>
+
+      <h3>Marketive UII (Copywriter)</h3>
+      <p>Bertugas menyusun skrip yang menarik dan sesuai dengan tujuan konten, serta membuat script yang sesuai dengan ide agar dapat tersampaikan dengan baik sesuai konsep yang telah ditentukan.</p>
+    </article>
+
+    <section id="keahlian">
+      <h2>Keahlian &amp; Fokus Utama</h2>
+      <p>Peminatan informatika dan pengalaman media kreatif yang saya tekuni meliputi:</p>
+      <ul>
+        <li><strong>UI/UX Design:</strong> Wireframing, prototyping di Figma, serta riset kebutuhan pengguna.</li>
+        <li><strong>Media Kreatif &amp; Copywriting:</strong> Perancangan skrip konten, strategi konten media sosial, dan penulisan.</li>
+        <li><strong>Pemrograman Web &amp; Desktop:</strong> HTML/CSS, Python, Java, dan Scene Builder.</li>
+      </ul>
+    </section>
+
+    <aside id="pengalaman">
+      <h2>Pengalaman Organisasi, Kepemimpinan &amp; Tim Proyek</h2>
+      <p>Aktivitas yang pernah saya jalani:</p>
+      <ul>
+        <li><strong>Pengurus dan Sekretaris PMR:</strong> Mengelola kegiatan seluruh program kerja, membimbing seluruh anggota, melatih tim lomba, menangani prosedur pertolongan pertama, arsip surat, serta koordinasi internal tim.</li>
+        <li><strong>Student Staff Copywriter dan Marketive UII Copywriter:</strong> Content planning, pembuatan script, eksekusi konten, riset tren media sosial, pengembangan ide kreatif, dan kolaborasi tim.</li>
+        <li><strong>Talent Visual Kampus:</strong> Berperan sebagai talent video dan kreator konten visual untuk promosi fakultas/universitas.</li>
+      </ul>
+    </aside>
+
+    <section id="pencapaian">
+      <h2>Pencapaian</h2>
+      <p>Beberapa pencapaian yang telah diraih:</p>
+      <ul>
+        <li><strong>Penerima Beasiswa OSC (Online Scholarship Competition):</strong> Beasiswa penuh jenjang sarjana di UII.</li>
+        <li><strong>Juara 2 Lomba “Perawatan Keluarga”:</strong> Creaphoria 14 tingkat Provinsi.</li>
+        <li><strong>Juara 2 Lomba “Pertolongan Pertama”:</strong> Competition Ex-Residency of Surakarta.</li>
+        <li><strong>Juara 2 Kompetisi Video Pendek PMR WIRA:</strong> Diselenggarakan oleh Universitas Muhammadiyah Surakarta.</li>
+        <li><strong>Juara 1 P5 Fase F “Rekayasa dan Teknologi”:</strong> Proyek P5 SMA Negeri 1 Kartasura.</li>
+        <li><strong>Juara 2 Film Pendek “Traitor” P5 Fase F:</strong> Proyek P5 SMA Negeri 1 Kartasura.</li>
+      </ul>
+    </section>
+
+<section id="kontak">
       <h2>Hubungi saya</h2>
-      <p>Isi formulir berikut. Semua kolom bertanda wajib harus diisi.</p>
+      <p>Anda dapat menghubungi saya secara langsung melalui media sosial atau email berikut:</p>
+      
+      <ul>
+        <li>Email: <a href="mailto:assyifa.nfjaa@gmail.com">assyifa.nfjaa@gmail.com</a></li>
+        <li>Instagram: <a href="https://instagram.com/assyifa.nfj" target="_blank" rel="noopener noreferrer">@assyifa.nfj</a></li>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/assyifa-nur-f-j-5b503137a" target="_blank" rel="noopener noreferrer">Assyifa Nur Fauziyah Jaelani</a></li>
+      </ul>
+
+      <p>Atau isi formulir berikut. Semua kolom bertanda wajib harus diisi.</p>
 
       <form action="#" method="post">
         <fieldset>
@@ -136,7 +238,7 @@
             <!-- ISI 8 — ganti angka di dalam pattern dengan NIM Anda sendiri. -->
             <input id="nim" name="nim" type="text" inputmode="numeric"
                    pattern="[0-9]{8}" aria-describedby="nim-bantuan" required>
-            <span id="nim-bantuan">Delapan digit angka, contoh 105230102.</span>
+            <span id="nim-bantuan">Delapan digit angka, contoh 25523200.</span>
           </p>
 
           <p>
@@ -149,16 +251,11 @@
       </form>
     </section>
 
-    <!-- STRUKTUR TAMBAHAN (Lembar B.3) — minimal tiga bagian baru di sini,
-         sebelum tag penutup </main>. Wajib: satu <h2> per bagian, atribut id
-         yang belum terpakai, elemen semantik yang berbeda satu sama lain, dan
-         gaya memakai token yang sama. Tiga section di atas JANGAN diubah. -->
-
   </main>
 
   <footer class="kaki">
     <!-- ISI 9 — nama, NIM, tahun. -->
-    <p>Nama Anda · 105230102 · <time datetime="2026">2026</time></p>
+    <p>Assyifa Nur Fauziyah Jaelani · 25523200 · <time datetime="2026">2026</time></p>
   </footer>
 </body>
 </html>
