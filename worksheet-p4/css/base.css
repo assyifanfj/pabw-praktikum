@@ -1,4 +1,4 @@
-/* E.1 Reset Ringan & Box-Sizing */
+/* E.1 Reset dikit dan box-sizing */
 *, *::before, *::after {
     box-sizing: border-box; 
 }
@@ -13,7 +13,7 @@ img {
     display: block;
 }
 
-/* E.2 & E.3 Tipografi & Warna Dasar Halaman */
+/* E.2 & E.3 Tipografi dan warna dasar halaman */
 html {
     font-size: 100%;
 }

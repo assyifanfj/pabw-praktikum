@@ -1,4 +1,4 @@
-/* F.1 Navbar dalam satu baris (Flexbox) */
+/* F.1 Navbar dalam satu baris (flexbox) */
 header.kepala {
     display: flex;
     flex-wrap: wrap;
@@ -27,7 +27,7 @@ nav a:hover {
     text-decoration: underline;
 }
 
-/* F.2 Tata Letak Main & Footer */
+/* F.2 Tata letak main & footer */
 main {
     display: flex;
     flex-direction: column;
