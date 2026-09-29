@@ -63,3 +63,27 @@ footer.kaki {
     color: var(--color-fg);
     font-size: var(--text-sm);
 }
+
+/* D. Penempatan: span dan area bernama */
+
+/* D.1 Penempatan Menggunakan Span */
+.kartu-sorotan {
+    grid-column: span 2;
+}
+
+/* D.2 Penempatan Menggunakan Area Bernama */
+.isi-area {
+    display: grid;
+    grid-template-columns: 16rem 1fr;
+    gap: var(--space-6);
+    grid-template-areas:
+        "sisi utama";
+}
+
+.isi-area > :first-child {
+    grid-area: sisi;
+}
+
+.isi-area > :last-child {
+    grid-area: utama;
+}
