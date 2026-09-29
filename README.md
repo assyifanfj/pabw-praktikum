@@ -100,3 +100,9 @@ diselesaikan di luar kelas sampai pukul 23.59 hari yang sama.
 Folder `worksheet-p4/` di dalam repositori GitHub Anda sendiri, berisi
 `profil.html`, `css/`, `media/`, dan `bukti/`. Sudah di-commit dan di-push
 sebelum **pukul 23.59 hari yang sama**. Tidak ada perpanjangan.
+
+## Tambahan yang Saya Lakukan Pada P05
+Tampilannya saya sesuaikan dengan keinginan saya:
+- Pada bagian kegiatan yang saya ikuti semester ini, saya buat tabel
+- Pada bagian kutipan, karena saya ada kutipan pribadi dan favorit, saya pisah, saya buat kotak pemisahnya supaya lebih bagus dan rapi
+- Pada bagian galeri karya, supaya lebih rapi juga saya buat kotak-kotak pemisah
