@@ -84,3 +84,25 @@ textarea:user-invalid {
     border-color: var(--color-danger);
     border-width: 2px;
 }
+
+/* E. Tiga kasus yang sering gagal */
+
+/* E.1 Menjaga tinggi kartu seragam di galeri/grid */
+.galeri li,
+.galeri figure {
+    display: grid;
+    align-content: start;
+    min-height: 14rem;
+}
+
+/* E.2 Mencegah isi panjang mendorong/merusak lebar kolom */
+figure,
+section,
+article,
+.galeri li {
+    min-width: 0;
+}
+
+h1, h2, h3, p, figcaption {
+    overflow-wrap: anywhere;
+}
