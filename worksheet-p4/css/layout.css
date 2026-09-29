@@ -6,21 +6,40 @@
 }
 
 /* B.2 Navbar dan isi */
-/* Header & navbar */
+/* Header & navbar — Disesuaikan agar Nama & Tagline tersusun rapi di bawah tombol tema */
 header.kepala {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-4);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
     padding-block: var(--space-4);
     border-bottom: 1px solid var(--color-border);
+}
+
+.tombol-tema {
+    margin-bottom: var(--space-2);
+    cursor: pointer;
+}
+
+header.kepala h1 {
+    font-size: var(--text-3xl);
+    line-height: 1.15;
+    margin: 0;
+}
+
+header.kepala .tagline {
+    font-size: var(--text-md);
+    color: var(--color-fg);
+    margin-top: var(--space-1);
+    margin-bottom: var(--space-3);
+    max-width: 100%;
 }
 
 .navbar {
     display: flex;
     gap: var(--space-4);
     align-items: center;
+    width: 100%;
 }
 
 nav ul {

@@ -1,4 +1,5 @@
-/* Lembar C: galeri dan kartu */
+/* /* Lembar C: galeri dan kartu */
+
 /* C.1 Galeri adaptif (grid tanpa media query) */
 .galeri {
     display: grid;
@@ -9,7 +10,30 @@
     margin: 0;
 }
 
-/* C.2 Isi Kartu (flexbox untuk elemen yang sejajar) */
+/* C.2 Isi kartu (flexbox untuk elemen yang sejajar) */
+.kartu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: var(--card-pad, var(--space-4));
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.kartu:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.kartu__isi {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+}
+
 .kartu__kaki {
     display: flex;
     align-items: center;
@@ -17,7 +41,9 @@
     gap: var(--space-2);
 }
 
-/* LEMBAR G.1: Tampilan Dasar Form, Fieldset, & Tombol */
+
+/* Lembar G: Form, input, tombol */
+
 form fieldset {
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
@@ -44,7 +70,6 @@ label {
     color: var(--color-fg);
 }
 
-/* Pakai font: inherit biar font input ngikutin font utama website */
 input, select, textarea {
     font: inherit;
     padding: var(--space-2) var(--space-3);
@@ -52,10 +77,12 @@ input, select, textarea {
     border-radius: var(--radius-md);
     background: var(--color-surface);
     color: var(--color-fg);
+    width: 100%;
+    box-sizing: border-box;
 }
 
-/* Style tombol kirim/submit */
-button[type="submit"] {
+button[type="submit"],
+.btn {
     font: inherit;
     padding: var(--space-2) var(--space-4);
     border: 1px solid transparent;
@@ -64,38 +91,76 @@ button[type="submit"] {
     color: var(--color-surface);
     cursor: pointer;
     font-weight: 600;
+    align-self: flex-start;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
-button[type="submit"]:hover {
+button[type="submit"]:hover,
+.btn:hover {
     opacity: 0.9;
 }
 
-/* LEMBAR G.2: Indikator Fokus Papan Ketik (Keyboard Focus) */
-/* Memastikan garis fokus terlihat jelas saat ditekan tombol TAB */
+input:disabled, select:disabled, textarea:disabled, button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
 :focus-visible {
     outline: 3px solid var(--color-focus);
     outline-offset: 2px;
 }
 
-/* LEMBAR G.3: Keadaan Tidak Sah (Validasi Input) */
-/* Garis merah hanya muncul kalau pengguna salah ketik/mengisi kolom */
 input:user-invalid,
 textarea:user-invalid {
     border-color: var(--color-danger);
     border-width: 2px;
 }
 
-/* E. Tiga kasus yang sering gagal */
 
-/* E.1 Menjaga tinggi kartu seragam di galeri/grid */
-.galeri li,
-.galeri figure {
-    display: grid;
-    align-content: start;
-    min-height: 14rem;
+/* Lembar E: Penanganan kasus khusus & media */
+
+.galeri li {
+    display: flex;
 }
 
-/* E.2 Mencegah isi panjang mendorong/merusak lebar kolom */
+/* Setiap karya dibungkus kotak terpisah */
+.galeri figure {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    padding: var(--space-3, 0.75rem);
+    background-color: var(--color-surface, #ffffff);
+    border: 1px solid var(--color-border, #e5e7eb);
+    border-radius: var(--radius-md, 8px);
+    box-sizing: border-box;
+}
+
+/* Gambar utuh tanpa terpotong & masuk di dalam kotak */
+.galeri img {
+    width: 100%;
+    height: auto;
+    max-height: 280px;
+    object-fit: contain; /* Menjaga foto utuh tidak terpotong/gepeng */
+    border-radius: var(--radius-sm, 4px);
+    display: block;
+}
+
+/* Teks judul di dalam kotak & rata tengah */
+.galeri figcaption {
+    margin-top: var(--space-3, 0.75rem);
+    font-size: var(--text-sm, 0.875rem);
+    font-weight: 500;
+    color: var(--color-fg);
+    text-align: center; /* Tulisan pas di tengah */
+    line-height: 1.4;
+    padding-inline: var(--space-1, 0.25rem);
+}
+
 figure,
 section,
 article,
@@ -105,4 +170,54 @@ article,
 
 h1, h2, h3, p, figcaption {
     overflow-wrap: anywhere;
+}
+
+
+/* Kutipan */
+
+#kutipan {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4, 1rem);
+}
+
+#kutipan blockquote {
+    margin: 0;
+    padding: var(--space-4, 1.25rem);
+    background-color: var(--color-surface, #ffffff);
+    border: 1px solid var(--color-border, #e5e7eb);
+    border-radius: var(--radius-md, 8px);
+}
+
+#kutipan blockquote:first-of-type::before {
+    content: "KUTIPAN PRIBADI";
+    display: block;
+    font-size: var(--text-sm, 0.75rem);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-2, 0.5rem);
+}
+
+#kutipan blockquote:last-of-type::before {
+    content: "KUTIPAN FAVORIT";
+    display: block;
+    font-size: var(--text-sm, 0.75rem);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-2, 0.5rem);
+}
+
+#kutipan blockquote p {
+    font-size: var(--text-md, 1rem);
+    font-style: italic;
+    color: var(--color-fg);
+    margin-bottom: var(--space-2, 0.5rem);
+}
+
+#kutipan cite {
+    display: block;
+    font-style: normal;
+    font-weight: 600;
+    color: var(--color-fg);
+    opacity: 0.8;
 }

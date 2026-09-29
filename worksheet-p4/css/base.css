@@ -43,13 +43,15 @@ h3 {
 }
 
 main p {
-    max-width: 60ch;
+    max-width: 100%;
+    margin-bottom: var(--space-3, 1rem);
 }
 
 /* Link dan aksesibilitas */
 a {
     color: var(--color-primary);
     text-decoration: underline;
+    text-underline-offset: 2px;
 }
 
 a:focus-visible {
@@ -69,4 +71,54 @@ a:focus-visible {
 
 .lewati:focus {
     top: 0;
+}
+
+/* Styling Tabel Kegiatan */
+table {
+    width: 100%;
+    border-spacing: 0;
+    margin-top: var(--space-4, 1rem);
+    margin-bottom: var(--space-4, 1rem);
+    background-color: var(--color-surface, #ffffff);
+    border-radius: var(--radius-md, 8px);
+    border: 1px solid var(--color-border, #e5e7eb);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+caption {
+    font-weight: 600;
+    margin-bottom: var(--space-2, 0.5rem);
+    text-align: left;
+    color: var(--color-fg);
+}
+
+th, td {
+    padding: var(--space-3, 0.75rem) var(--space-4, 1rem);
+    text-align: left;
+    border-bottom: 1px solid var(--color-border, #e5e7eb);
+}
+
+thead th {
+    background-color: var(--color-primary, #334155);
+    color: #ffffff;
+    font-weight: 600;
+    border-bottom: none;
+}
+
+/* KUNCI: Membulatkan sudut header biru secara langsung */
+thead tr:first-child th:first-child {
+    border-top-left-radius: var(--radius-md, 8px);
+}
+
+thead tr:first-child th:last-child {
+    border-top-right-radius: var(--radius-md, 8px);
+}
+
+tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+tbody tr:last-child td,
+tbody tr:last-child th {
+    border-bottom: none;
 }
