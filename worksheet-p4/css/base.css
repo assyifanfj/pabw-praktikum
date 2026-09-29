@@ -62,15 +62,18 @@ a:focus-visible {
 .lewati {
     position: absolute;
     top: -9999px;
-    left: 0;
-    background: var(--color-surface);
-    color: var(--color-primary);
-    padding: var(--space-2) var(--space-4);
-    z-index: 100;
+    left: -9999px;
+    background: var(--color-primary, #000);
+    color: #fff;
+    padding: var(--space-2, 0.5rem) var(--space-4, 1rem);
+    z-index: 9999;
+    text-decoration: none;
+    border-radius: var(--radius-sm, 4px);
 }
 
 .lewati:focus {
-    top: 0;
+    top: 1rem;
+    left: 1rem;
 }
 
 /* Styling Tabel Kegiatan */

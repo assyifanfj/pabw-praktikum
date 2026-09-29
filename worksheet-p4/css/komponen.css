@@ -1,4 +1,6 @@
-/* /* Lembar C: galeri dan kartu */
+/* ==========================================
+   LEMBAR C: GALERI DAN KARTU
+   ========================================== */
 
 /* C.1 Galeri adaptif (grid tanpa media query) */
 .galeri {
@@ -24,7 +26,8 @@
 }
 
 .kartu:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .kartu__isi {
@@ -42,12 +45,14 @@
 }
 
 
-/* Lembar G: Form, input, tombol */
+/* ==========================================
+   LEMBAR G: FORM, INPUT, TOMBOL
+   ========================================== */
 
 form fieldset {
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
-    padding: var(--card-pad);
+    padding: var(--card-pad, var(--space-4));
     background-color: var(--color-surface);
 }
 
@@ -79,6 +84,13 @@ input, select, textarea {
     color: var(--color-fg);
     width: 100%;
     box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Memastikan area textarea nyaman digunakan */
+textarea {
+    min-height: 6rem;
+    resize: vertical;
 }
 
 button[type="submit"],
@@ -96,11 +108,17 @@ button[type="submit"],
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    transition: opacity 0.2s ease, transform 0.1s ease;
 }
 
 button[type="submit"]:hover,
 .btn:hover {
     opacity: 0.9;
+}
+
+button[type="submit"]:active,
+.btn:active {
+    transform: scale(0.98);
 }
 
 input:disabled, select:disabled, textarea:disabled, button:disabled {
@@ -109,18 +127,20 @@ input:disabled, select:disabled, textarea:disabled, button:disabled {
 }
 
 :focus-visible {
-    outline: 3px solid var(--color-focus);
+    outline: 3px solid var(--color-focus, #2563eb);
     outline-offset: 2px;
 }
 
 input:user-invalid,
 textarea:user-invalid {
-    border-color: var(--color-danger);
+    border-color: var(--color-danger, #dc2626);
     border-width: 2px;
 }
 
 
-/* Lembar E: Penanganan kasus khusus & media */
+/* ==========================================
+   LEMBAR E: PENANGANAN KASUS KHUSUS & MEDIA
+   ========================================== */
 
 .galeri li {
     display: flex;
@@ -138,6 +158,12 @@ textarea:user-invalid {
     border: 1px solid var(--color-border, #e5e7eb);
     border-radius: var(--radius-md, 8px);
     box-sizing: border-box;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.galeri figure:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 /* Gambar utuh tanpa terpotong & masuk di dalam kotak */
@@ -173,7 +199,9 @@ h1, h2, h3, p, figcaption {
 }
 
 
-/* Kutipan */
+/* ==========================================
+   KUTIPAN (BLOCKQUOTE)
+   ========================================== */
 
 #kutipan {
     display: flex;
@@ -196,6 +224,7 @@ h1, h2, h3, p, figcaption {
     font-weight: 700;
     letter-spacing: 0.05em;
     margin-bottom: var(--space-2, 0.5rem);
+    color: var(--color-primary, #2563eb);
 }
 
 #kutipan blockquote:last-of-type::before {
@@ -205,6 +234,7 @@ h1, h2, h3, p, figcaption {
     font-weight: 700;
     letter-spacing: 0.05em;
     margin-bottom: var(--space-2, 0.5rem);
+    color: var(--color-primary, #2563eb);
 }
 
 #kutipan blockquote p {
