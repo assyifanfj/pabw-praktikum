@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<!--
+  STARTER CODE P03 - Kelas Terbuka Kampus
+  Fokus: HTML semantik, form, media, dan aksesibilitas.
+  Tidak menggunakan CSS atau JavaScript.
+-->
+<!-- [LANGKAH 2] Tambahkan atribut lang pada elemen html. -->
+<html lang="id">
+<head>
+  <!-- [LANGKAH 2] Lengkapi metadata dokumen yang belum ada. -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sesi belajar kecil untuk ide yang lebih besar di Kelas Terbuka Kampus.">
+  <title>Kelas Terbuka Kampus</title>
+</head>
+<body>
+  <!-- [LANGKAH 5] Tambahkan skip link di sini setelah struktur halaman selesai. -->
+  <a href="#isi-utama">Lewati ke konten utama</a>
+
+  <!-- [LANGKAH 2] Pilih elemen semantik yang tepat untuk pembungkus ini. -->
+  <header id="bagian-atas">
+    <h1>Kelas Terbuka Kampus</h1>
+    <p>Sesi belajar kecil untuk ide yang lebih besar</p>
+    <!-- [LANGKAH 2] Ubah pembungkus navigasi menjadi elemen yang tepat. -->
+    <nav id="navigasi">
+      <a href="#agenda">Agenda</a>
+      <a href="#daftar">Daftar</a>
+      <a href="#cerita">Cerita Kelas</a>
+      <!-- [LANGKAH 5] Tombol ini memerlukan nama aksesibel. -->
+      <button type="button" aria-label="Cari kegiatan">&#128269;</button>
+    </nav>
+  </header>
+
+  <!-- [LANGKAH 2] Ubah pembungkus ini menjadi landmark isi utama. -->
+  <main id="isi-utama">
+    <div id="agenda">
+      <!-- [LANGKAH 2] Perbaiki heading agar hanya ada satu h1 dan urutannya benar. -->
+      <h2>Belajar membuat portofolio yang mudah dibaca</h2>
+      <p>Sabtu, 10 Oktober 2026 pukul 09.00 sampai 11.00 di Ruang Diskusi Perpustakaan.</p>
+
+      <!-- [LANGKAH 2] Jadikan ini tabel data yang bermakna. -->
+      <table>
+        <caption>Agenda Sesi Kelas Terbuka Kampus</caption>
+        <thead>
+          <tr>
+            <th scope="col">Waktu</th>
+            <th scope="col">Kegiatan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">09.00</th>
+            <td>Membuka portofolio</td>
+          </tr>
+          <tr>
+            <th scope="row">09.30</th>
+            <td>Menyusun cerita proyek</td>
+          </tr>
+          <tr>
+            <th scope="row">10.30</th>
+            <td>Umpan balik teman sebaya</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- [LANGKAH 2] Bungkus gambar dan keterangannya dengan elemen yang tepat. -->
+      <figure>
+        <img src="media/buku.jpg" width="320" height="213" alt="Ruang diskusi perpustakaan">
+        <figcaption>Sudut baca yang dipakai untuk sesi Kelas Terbuka Kampus.</figcaption>
+      </figure>
+    </div>
+
+    <!-- [LANGKAH 2] Ubah pembungkus ini menjadi konten pendamping. -->
+    <aside id="info-singkat">
+      <h2>Yang perlu dibawa</h2>
+      <ul>
+        <li>Laptop atau buku catatan</li>
+        <li>Satu proyek yang ingin diceritakan</li>
+        <li>Rasa ingin tahu</li>
+      </ul>
+    </aside>
+
+    <div id="daftar">
+      <h2>Daftar sesi</h2>
+      <p>Isi data berikut. Semua data hanya digunakan untuk daftar hadir.</p>
+      <!-- [LANGKAH 3] Lengkapi form dengan label eksplisit, name, type, autocomplete,
+            required, constraint NIM, fieldset, legend, dan pesan bantuan.
+            Hapus novalidate saat form siap diuji. -->
+      <form action="#" method="post">
+        <fieldset>
+          <legend>Formulir Pendaftaran Sesi</legend>
+          
+          <div>
+            <label for="nama">Nama lengkap</label><br>
+            <input 
+              type="text" 
+              id="nama" 
+              name="nama" 
+              autocomplete="name" 
+              required 
+              placeholder="Masukkan nama lengkap"
+            >
+          </div>
+          <br>
+
+          <div>
+            <label for="email">Email kampus</label><br>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              autocomplete="email" 
+              required 
+              placeholder="nama@kampus.ac.id"
+            >
+          </div>
+          <br>
+
+          <div>
+            <label for="nim">NIM 8 digit</label><br>
+            <input 
+              type="text" 
+              id="nim" 
+              name="nim" 
+              inputmode="numeric" 
+              pattern="[0-9]{8}" 
+              maxlength="8" 
+              required 
+              aria-describedby="petunjuk-nim" 
+              placeholder="Contoh: 22523001"
+            >
+            <br>
+            <small id="petunjuk-nim">Format NIM wajib 8 digit angka.</small>
+          </div>
+          <br>
+
+          <div>
+            <label for="topik">Topik yang ingin didiskusikan</label><br>
+            <textarea 
+              id="topik" 
+              name="topik" 
+              rows="4" 
+              placeholder="Tuliskan topik yang ingin kamu bahas..."
+            ></textarea>
+          </div>
+          <br>
+
+          <button type="submit">Kirim</button>
+        </fieldset>
+      </form>
+    </div>
+
+<div id="cerita">
+      <h2>Cerita dari kelas sebelumnya</h2>
+      <!-- [LANGKAH 4] Ganti gambar ini dengan picture. Gunakan hero-sm.webp dan hero-lg.webp
+            sebagai sumber, lalu hero.jpg sebagai fallback. -->
+      <picture>
+        <source media="(min-width: 768px)" srcset="media/hero-lg.webp">
+        <source media="(max-width: 767px)" srcset="media/hero-sm.webp">
+        <img src="media/hero.jpg" width="640" height="360" alt="Sesi Kelas Terbuka Kampus sebelumnya">
+      </picture>
+
+      <!-- [LANGKAH 4] Gambar ini hanya hiasan. Tentukan alternatif teks yang benar. -->
+      <img src="media/buku.jpg" width="200" height="133" alt="" aria-hidden="true">
+
+      <!-- [LANGKAH 4] Tambahkan video dengan controls, poster media/kuliah-cover.jpg,
+            dua source media/kuliah.webm dan media/kuliah.mp4, track caption bahasa
+            Indonesia dari media/id.vtt, dan teks fallback. -->
+      <video controls poster="media/kuliah-cover.jpg" width="640" height="360">
+        <source src="media/kuliah.webm" type="video/webm">
+        <source src="media/kuliah.mp4" type="video/mp4">
+        <track src="media/id.vtt" kind="captions" srclang="id" label="Bahasa Indonesia" default>
+        Browser Anda tidak mendukung pemutaran video HTML5.
+      </video>
+    </div>
+  </main>
+
+  <!-- [LANGKAH 2] Pilih elemen semantik yang tepat untuk bagian penutup. -->
+  <footer id="bagian-bawah">
+    <p>Kelas Terbuka Kampus 2026</p>
+  </footer>
+</body>
+</html>
