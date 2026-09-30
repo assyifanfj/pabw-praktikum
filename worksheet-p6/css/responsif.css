@@ -10,8 +10,8 @@
 /* Area bernama dari P5: layar sempit, konten utama dulu, kutipan (sisi) di bawah */
 .isi-area {
     grid-template-areas:
-    "utama"
-    "sisi";
+        "utama"
+        "sisi";
 }
 
 /* Galeri: satu kolom (di worksheet ditulis .grid, di halaman saya .galeri) */
@@ -31,32 +31,57 @@
 /* Tablet (48rem = 768px): galeri dua kolom */
 @media (min-width: 48rem) {
     .galeri {
-    grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 
-  /* foto pertama melebar dua kolom, dua foto lainnya sejajar di bawahnya */
+/* foto pertama melebar dua kolom, 2 foto lainnya sejajar di bawahnya */
     .kartu-sorotan {
-    grid-column: span 2;
+        grid-column: span 2;
     }
 }
 
 /* Desktop (60rem = 960px): sidebar di samping konten, galeri 3 kolom */
 @media (min-width: 60rem) {
     .isi {
-    grid-template-columns: 16rem 1fr;
-    align-items: start;
+        grid-template-columns: 16rem 1fr;
+        align-items: start;
     }
 
     .isi-area {
-    grid-template-areas: "sisi utama";
+        grid-template-areas: "sisi utama";
     }
 
     .galeri {
-    grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 
-  /* tiga foto sejajar satu baris, span dimatiin lagi */
+/* tiga foto sejajar satu baris, span dimatiin lagi */
     .kartu-sorotan {
-    grid-column: auto;
+        grid-column: auto;
     }
+}
+
+/* Lembar D: gambar, tabel, dan teks ikut nyesuaiin di semua lebar */
+
+/* Gambar gak boleh lebih lebar dari wadahnya biar foto ga gepeng kalau dibuka di ukuran hp */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Tabel dibungkus biar bisa digeser ke samping pas layar sempit. */
+.table-wrap {
+    overflow-x: auto;
+    padding-bottom: var(--space-1);
+}
+
+/* Lebar minimum tabel biar tetep rapi dan dibaca pas layar sempit */
+.table-wrap table {
+    min-width: 30rem;
+}
+
+/* Ukuran teks pakai rem biar ikut nyesuaiin pas huruf diperbesar */
+p {
+    font-size: var(--text-md);
+    line-height: 1.6;
 }
