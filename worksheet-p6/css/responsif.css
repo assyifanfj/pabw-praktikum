@@ -7,22 +7,56 @@
     gap: var(--space-6);
 }
 
-/* Area bernama: di layar sempit konten utama dulu, kutipan (sisi) di bawah */
+/* Area bernama dari P5: layar sempit, konten utama dulu, kutipan (sisi) di bawah */
 .isi-area {
     grid-template-areas:
     "utama"
     "sisi";
 }
 
-/* Galeri, satu kolom (di worksheet ditulis .grid, di saya ditulisnya .galeri) */
+/* Galeri: satu kolom (di worksheet ditulis .grid, di halaman saya .galeri) */
 .galeri {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-4);
 }
 
-/* Kartu sorotan gak melebar 2 kolom, karena dasarnya cuma 1 kolom
-   Span 2 dipasang lagi di Lembar C lewat min-width */
+/* Kartu sorotan gak melebar di layar sempit */
 .kartu-sorotan {
     grid-column: auto;
+}
+
+/* Lembar C: dua titik henti, ditulis min-width dan rem */
+
+/* Tablet (48rem = 768px): galeri dua kolom */
+@media (min-width: 48rem) {
+    .galeri {
+    grid-template-columns: repeat(2, 1fr);
+    }
+
+  /* foto pertama melebar dua kolom, dua foto lainnya sejajar di bawahnya */
+    .kartu-sorotan {
+    grid-column: span 2;
+    }
+}
+
+/* Desktop (60rem = 960px): sidebar di samping konten, galeri 3 kolom */
+@media (min-width: 60rem) {
+    .isi {
+    grid-template-columns: 16rem 1fr;
+    align-items: start;
+    }
+
+    .isi-area {
+    grid-template-areas: "sisi utama";
+    }
+
+    .galeri {
+    grid-template-columns: repeat(3, 1fr);
+    }
+
+  /* tiga foto sejajar satu baris, span dimatiin lagi */
+    .kartu-sorotan {
+    grid-column: auto;
+    }
 }
