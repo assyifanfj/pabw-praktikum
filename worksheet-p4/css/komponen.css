@@ -81,6 +81,11 @@ input, select, textarea {
     box-sizing: border-box;
 }
 
+/* Checkbox pengalih tema disembunyikan: jangan ikut width 100% dari aturan input */
+.pengalih-tema {
+    width: auto;
+}
+
 button[type="submit"],
 .btn {
     font: inherit;
@@ -144,7 +149,7 @@ textarea:user-invalid {
 .galeri img {
     width: 100%;
     height: auto;
-    max-height: 280px;
+    max-height: 17.5rem;
     object-fit: contain; /* Menjaga foto utuh tidak terpotong/gepeng */
     border-radius: var(--radius-sm, 4px);
     display: block;
@@ -168,7 +173,7 @@ article,
     min-width: 0;
 }
 
-h1, h2, h3, p, figcaption {
+h1, h2, h3, p, figcaption, caption, th, td {
     overflow-wrap: anywhere;
 }
 

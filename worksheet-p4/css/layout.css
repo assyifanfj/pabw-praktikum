@@ -63,14 +63,26 @@ nav a:hover {
 /* Tata letak area isi (grid dua kolom, sidebar & konten utama) */
 .isi {
     display: grid;
-    grid-template-columns: 16rem 1fr;
+    grid-template-columns: 1fr;
     gap: var(--space-6);
 }
 
-main {
+@media (min-width: 48rem) {
+    .isi {
+        grid-template-columns: 16rem 1fr;
+        align-items: start;
+    }
+}
+
+/* Kolom konten menyerap sisa lebar; min-width: 0 supaya isi panjang tidak mendorong kolom */
+.konten {
     display: flex;
     flex-direction: column;
     gap: var(--section-gap);
+    min-width: 0;
+}
+
+main {
     padding-block: var(--space-6);
 }
 
@@ -86,17 +98,24 @@ footer.kaki {
 /* D. Penempatan: span dan area bernama */
 
 /* D.1 Penempatan Menggunakan Span */
-.kartu-sorotan {
-    grid-column: span 2;
+@media (min-width: 53rem) {
+    .kartu-sorotan {
+        grid-column: span 2;
+    }
 }
 
 /* D.2 Penempatan Menggunakan Area Bernama */
 .isi-area {
-    display: grid;
-    grid-template-columns: 16rem 1fr;
-    gap: var(--space-6);
     grid-template-areas:
-        "sisi utama";
+        "sisi"
+        "utama";
+}
+
+@media (min-width: 48rem) {
+    .isi-area {
+        grid-template-areas:
+            "sisi utama";
+    }
 }
 
 .isi-area > :first-child {
