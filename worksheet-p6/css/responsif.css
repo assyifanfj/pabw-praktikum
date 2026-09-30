@@ -1,0 +1,28 @@
+/* P06, Lembar B: Gaya dasar layar sempit, untuk semua lebar, tanpa media query. */
+
+/* Kerangka isi: satu kolom (di worksheet ditulis .content, di halamanku .isi) */
+.isi {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+}
+
+/* Area bernama: di layar sempit konten utama dulu, kutipan (sisi) di bawah */
+.isi-area {
+    grid-template-areas:
+    "utama"
+    "sisi";
+}
+
+/* Galeri, satu kolom (di worksheet ditulis .grid, di saya ditulisnya .galeri) */
+.galeri {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+}
+
+/* Kartu sorotan gak melebar 2 kolom, karena dasarnya cuma 1 kolom
+   Span 2 dipasang lagi di Lembar C lewat min-width */
+.kartu-sorotan {
+    grid-column: auto;
+}
