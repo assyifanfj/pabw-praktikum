@@ -11,27 +11,23 @@ header.kepala {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--space-2);
+    gap: var(--space-3);
     padding-block: var(--space-4);
     border-bottom: 1px solid var(--color-border);
 }
 
 .tombol-tema {
-    margin-bottom: var(--space-2);
     cursor: pointer;
 }
 
 header.kepala h1 {
     font-size: var(--text-3xl);
     line-height: 1.15;
-    margin: 0;
 }
 
 header.kepala .tagline {
     font-size: var(--text-md);
     color: var(--color-fg);
-    margin-top: var(--space-1);
-    margin-bottom: var(--space-3);
     max-width: 100%;
 }
 
@@ -47,7 +43,6 @@ nav ul {
     gap: var(--space-4);
     list-style: none;
     padding: 0;
-    margin: 0;
     flex-wrap: wrap;
 }
 
@@ -58,6 +53,53 @@ nav a {
 
 nav a:hover {
     text-decoration: underline;
+}
+
+@media (min-width: 64rem) {
+    header.kepala {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        grid-template-areas:
+            "tema tema"
+            "judul menu"
+            "slogan slogan";
+        column-gap: var(--space-6);
+        row-gap: var(--space-2);
+        align-items: start;
+    }
+
+    .tombol-tema {
+        grid-area: tema;
+        justify-self: start;
+    }
+
+    header.kepala h1 {
+        grid-area: judul;
+    }
+
+    header.kepala .tagline {
+        grid-area: slogan;
+    }
+
+    .navbar {
+        grid-area: menu;
+        align-self: end;
+        justify-content: flex-end;
+        width: auto;
+    }
+
+    nav ul {
+        justify-content: flex-end;
+    }
+}
+
+/* Jarak antar isi di dalam tiap bagian pakai gap */
+main section,
+main article,
+main aside {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
 }
 
 /* Tata letak area isi (grid dua kolom, sidebar & konten utama) */
@@ -74,7 +116,6 @@ nav a:hover {
     }
 }
 
-/* Kolom konten menyerap sisa lebar; min-width: 0 supaya isi panjang tidak mendorong kolom */
 .konten {
     display: flex;
     flex-direction: column;
@@ -83,12 +124,11 @@ nav a:hover {
 }
 
 main {
-    padding-block: var(--space-6);
+    padding-block: var(--space-6) calc(var(--space-6) * 2);
 }
 
 /* Kaki halaman (footer) */
 footer.kaki {
-    margin-top: var(--space-6);
     padding-block: var(--space-4);
     border-top: 1px solid var(--color-border);
     color: var(--color-fg);

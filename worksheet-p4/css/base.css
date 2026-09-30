@@ -44,7 +44,6 @@ h3 {
 
 main p {
     max-width: 100%;
-    margin-bottom: var(--space-3, 1rem);
 }
 
 /* Link dan aksesibilitas */
@@ -80,8 +79,6 @@ a:focus-visible {
 table {
     width: 100%;
     border-spacing: 0;
-    margin-top: var(--space-4, 1rem);
-    margin-bottom: var(--space-4, 1rem);
     background-color: var(--color-surface, #ffffff);
     border-radius: var(--radius-md, 8px);
     border: 1px solid var(--color-border, #e5e7eb);
@@ -90,7 +87,7 @@ table {
 
 caption {
     font-weight: 600;
-    margin-bottom: var(--space-2, 0.5rem);
+    padding-bottom: var(--space-2, 0.5rem);
     text-align: left;
     color: var(--color-fg);
 }

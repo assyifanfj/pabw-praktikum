@@ -7,7 +7,6 @@
     gap: var(--space-4);
     list-style: none;
     padding: 0;
-    margin: 0;
 }
 
 /* C.2 Isi kartu (flexbox untuk elemen yang sejajar) */
@@ -15,6 +14,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: var(--space-4);
     height: 100%;
     padding: var(--card-pad, var(--space-4));
     background-color: var(--color-surface);
@@ -31,7 +31,6 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
-    margin-bottom: var(--space-4);
 }
 
 .kartu__kaki {
@@ -45,6 +44,9 @@
 /* Lembar G: Form, input, tombol */
 
 form fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     padding: var(--card-pad);
@@ -61,7 +63,6 @@ form p {
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
-    margin-bottom: var(--space-4);
 }
 
 label {
@@ -136,8 +137,8 @@ textarea:user-invalid {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: var(--space-3, 0.75rem);
     width: 100%;
-    margin: 0;
     padding: var(--space-3, 0.75rem);
     background-color: var(--color-surface, #ffffff);
     border: 1px solid var(--color-border, #e5e7eb);
@@ -157,7 +158,6 @@ textarea:user-invalid {
 
 /* Teks judul di dalam kotak & rata tengah */
 .galeri figcaption {
-    margin-top: var(--space-3, 0.75rem);
     font-size: var(--text-sm, 0.875rem);
     font-weight: 500;
     color: var(--color-fg);
@@ -187,7 +187,9 @@ h1, h2, h3, p, figcaption, caption, th, td {
 }
 
 #kutipan blockquote {
-    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2, 0.5rem);
     padding: var(--space-4, 1.25rem);
     background-color: var(--color-surface, #ffffff);
     border: 1px solid var(--color-border, #e5e7eb);
@@ -200,7 +202,6 @@ h1, h2, h3, p, figcaption, caption, th, td {
     font-size: var(--text-sm, 0.75rem);
     font-weight: 700;
     letter-spacing: 0.05em;
-    margin-bottom: var(--space-2, 0.5rem);
 }
 
 #kutipan blockquote:last-of-type::before {
@@ -209,14 +210,12 @@ h1, h2, h3, p, figcaption, caption, th, td {
     font-size: var(--text-sm, 0.75rem);
     font-weight: 700;
     letter-spacing: 0.05em;
-    margin-bottom: var(--space-2, 0.5rem);
 }
 
 #kutipan blockquote p {
     font-size: var(--text-md, 1rem);
     font-style: italic;
     color: var(--color-fg);
-    margin-bottom: var(--space-2, 0.5rem);
 }
 
 #kutipan cite {
