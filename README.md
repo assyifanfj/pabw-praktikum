@@ -107,3 +107,18 @@ Tampilannya saya sesuaikan dengan keinginan saya:
 - Pada bagian kutipan, karena saya ada kutipan pribadi dan favorit, saya pisah, saya buat kotak pemisahnya supaya lebih bagus dan rapi
 - Pada bagian galeri karya, supaya lebih rapi juga saya buat kotak-kotak pemisah
 - Pada bagian "Lewati ke konten utama" saya buat baru muncul opsinya kalau klik "Tab" dulu, jadi tersembunyi, biar tampilannya rapi
+
+
+# Praktikum P08 — JavaScript Modern ES6+: Halaman Profil yang Datanya Bergerak
+
+Folder `worksheet-p8/` melanjutkan halaman profil dari P06 (`profil.html` dan CSS tidak diubah) dengan tambahan `js/app.js`. Isi halaman dipindah menjadi data JavaScript: objek `profil`, array `daftarProyek`, dua fungsi murni (`buatPerkenalan`, `formatKeahlian`), dan olah data dengan `map`, `filter`, `find`. Tiga tangkapan layar Console ada di folder `bukti/`.
+
+## Deklarasi penggunaan AI (Pertemuan 8)
+
+Dibantu AI:
+- Mencari tahu bagian mana yang bermasalah saat `git push` ke GitHub sempat gagal
+- belajar materinya juga ada yang dibimbing ai buat materi
+
+Dikerjakan sendiri:
+- Isi data profil, daftar keahlian, dan daftar proyek, dua fungsi murni, dan pemakaian array methods, Lembar A–F, beserta komentar penjelasan di hampir setiap baris `app.js`
+- Menjalankan halaman lewat Live Server, membaca galat di Console, mengambil tangkapan layar, mengisi worksheet, dan seluruh commit
