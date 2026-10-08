@@ -225,3 +225,15 @@ h1, h2, h3, p, figcaption, caption, th, td {
     color: var(--color-fg);
     opacity: 0.8;
 }
+
+/* P9: daftar proyek hasil JS, biar kartunya rapi dan nggak numpuk di layar sempit */
+#daftar {
+    display: grid;
+    gap: var(--space-4);
+    list-style: none;
+    padding: 0;
+}
+
+#daftar .kartu {
+    height: auto;
+}
