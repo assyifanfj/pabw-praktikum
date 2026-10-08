@@ -94,9 +94,6 @@ const aturan = [
     }
 ];
 
-// tombol baru dikunci setelah klik kirim pertama
-let sudahCoba = false;
-
 // cek satu kolom, tampilkan atau hapus pesannya, balikin true kalau sah
 function periksaKolom(aturanKolom) {
     const sah = aturanKolom.cek(aturanKolom.kolom.value);
@@ -114,10 +111,12 @@ function semuaSah() {
     return aturan.every((a) => a.cek(a.kolom.value));
 }
 
-// pas form dikirim
+// tombol kirim ditahan dari awal, baru aktif kalau semua kolom sah
+tombolKirim.disabled = !semuaSah();
+
+// pas form dikirim (tetap dijaga walau tombolnya sudah ditahan)
 formKontak.addEventListener("submit", (event) => {
     event.preventDefault(); // baris pertama, biar halaman nggak reload
-    sudahCoba = true;
     const hasil = aturan.map((a) => periksaKolom(a)); // semua kolom diperiksa
     const sah = hasil.every(Boolean);
     tombolKirim.disabled = !sah;
@@ -132,13 +131,20 @@ formKontak.addEventListener("submit", (event) => {
         pesan: kolomPesan.value.trim()
     });
     formKontak.reset();
-    sudahCoba = false;
+    tombolKirim.disabled = true; // form kosong lagi, tombol ditahan lagi
 });
 
-// pas ngetik di kolom mana pun itu (satu pendengar di formnya)
+// pas ngetik di kolom mana pun (satu pendengar di formnya)
 formKontak.addEventListener("input", (event) => {
     const aturanKolom = aturan.find((a) => a.kolom === event.target);
     if (!aturanKolom) return;
     periksaKolom(aturanKolom);
-    if (sudahCoba) tombolKirim.disabled = !semuaSah();
+    tombolKirim.disabled = !semuaSah(); // tombol ikut keadaan semua kolom
+});
+
+// pas pindah dari kolom, supaya kolom kosong yang ditinggal langsung dapat pesan
+formKontak.addEventListener("focusout", (event) => {
+    const aturanKolom = aturan.find((a) => a.kolom === event.target);
+    if (!aturanKolom) return;
+    periksaKolom(aturanKolom);
 });

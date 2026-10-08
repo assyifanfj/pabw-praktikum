@@ -122,3 +122,16 @@ Dibantu AI:
 Dikerjakan sendiri:
 - Isi data profil, daftar keahlian, dan daftar proyek, dua fungsi murni, dan pemakaian array methods, Lembar A–F, beserta komentar penjelasan di hampir setiap baris `app.js`
 - Menjalankan halaman lewat Live Server, membaca galat di Console, mengambil tangkapan layar, mengisi worksheet, dan seluruh commit
+
+# Praktikum P09 — DOM, Event, dan Interaktivitas
+
+Folder `worksheet-p9/` melanjutkan halaman profil dari P8 (`profil.html`, seluruh CSS, dan `js/app.js` tidak diubah selain `export` pada data) dengan tambahan `js/dom.js`. Daftar proyek dirender dari array `daftarProyek` memakai `createElement`, `textContent`, dan `append`, tombol filter dilayani satu pendengar di induk (`#filter`) dengan `closest` dan `dataset`; form kontak diberi `preventDefault`, validasi per kolom, dan pesan galat. Tangkapan layar Lembar E ada di folder `bukti/` (`e1-halaman-diam-pas-diklik.png`, `e2-diperbaiki.png`, `e3-filter-bekerja.png`).
+
+## Deklarasi penggunaan AI (Pertemuan 9)
+
+Dibantu AI:
+- Buat bantuin isi file readme ini maksudnya apa aja yang perlu ditambah penjelasannya
+- materi dibantu dijelaskan juga sama AI
+
+Dikerjakan sendiri:
+- Kode-kode yang diperlukan di tugas `js/dom.js` (render, filter, validasi form), dan file lain, Lembar A–E, tabel pengamatan di worksheet, tangkapan layar, dan seluruh commit
