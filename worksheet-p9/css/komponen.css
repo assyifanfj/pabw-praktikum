@@ -237,3 +237,9 @@ h1, h2, h3, p, figcaption, caption, th, td {
 #daftar .kartu {
     height: auto;
 }
+
+/* P9: penanda tombol filter yang lagi aktif */
+.aktif {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}
