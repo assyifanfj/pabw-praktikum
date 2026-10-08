@@ -1,4 +1,4 @@
-// P9 Lembar A + B + C
+// P9 Lembar A + B + C + D
 // dom.js ngurusin halaman, datanya diambil dari app.js
 import { daftarProyek } from "./app.js";
 
@@ -50,6 +50,7 @@ function tandaiTombolAktif(tombolAktif) {
     });
 }
 
+// satu pendengar di induknya, tombol yang dibuat belakangan tetap kebaca
 barisFilter.addEventListener("click", (event) => {
     const tombol = event.target.closest("button");
     if (!tombol) return; // klik di luar tombol, abaikan
@@ -61,4 +62,83 @@ barisFilter.addEventListener("click", (event) => {
     render(terpilih);
 });
 
+// tampilan awal: semua proyek
 render(daftarProyek);
+
+// Lembar D
+// aturan tiap kolom: cara ngecek nilainya + pesan kalau salah
+const aturan = [
+    {
+        kolom: kolomNama,
+        galat: document.querySelector("#nama-galat"),
+        cek: (nilai) => nilai.trim() !== "",
+        pesan: "Nama belum diisi. Tulis nama lengkap kamu ya."
+    },
+    {
+        kolom: kolomEmail,
+        galat: document.querySelector("#email-galat"),
+        cek: (nilai) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(nilai.trim()),
+        pesan: "Format email belum pas. Coba tulis seperti nama@email.com."
+    },
+    {
+        kolom: kolomNim,
+        galat: document.querySelector("#nim-galat"),
+        cek: (nilai) => /^[0-9]{8}$/.test(nilai.trim()),
+        pesan: "NIM harus 8 digit angka saja, contoh 25523200."
+    },
+    {
+        kolom: kolomPesan,
+        galat: document.querySelector("#pesan-galat"),
+        cek: (nilai) => nilai.trim() !== "",
+        pesan: "Pesan belum diisi. Tulis sedikit isi pesan kamu."
+    }
+];
+
+// tombol baru dikunci setelah klik kirim pertama
+let sudahCoba = false;
+
+// cek satu kolom, tampilkan atau hapus pesannya, balikin true kalau sah
+function periksaKolom(aturanKolom) {
+    const sah = aturanKolom.cek(aturanKolom.kolom.value);
+    aturanKolom.galat.textContent = sah ? "" : aturanKolom.pesan;
+    if (sah) {
+        aturanKolom.kolom.removeAttribute("aria-invalid");
+    } else {
+        aturanKolom.kolom.setAttribute("aria-invalid", "true");
+    }
+    return sah;
+}
+
+// true kalau semua kolom udah layak
+function semuaSah() {
+    return aturan.every((a) => a.cek(a.kolom.value));
+}
+
+// pas form dikirim
+formKontak.addEventListener("submit", (event) => {
+    event.preventDefault(); // baris pertama, biar halaman nggak reload
+    sudahCoba = true;
+    const hasil = aturan.map((a) => periksaKolom(a)); // semua kolom diperiksa
+    const sah = hasil.every(Boolean);
+    tombolKirim.disabled = !sah;
+    if (!sah) {
+        aturan[hasil.indexOf(false)].kolom.focus(); // arahin ke kolom salah pertama
+        return;
+    }
+    console.log("form sah, data:", {
+        nama: kolomNama.value.trim(),
+        email: kolomEmail.value.trim(),
+        nim: kolomNim.value.trim(),
+        pesan: kolomPesan.value.trim()
+    });
+    formKontak.reset();
+    sudahCoba = false;
+});
+
+// pas ngetik di kolom mana pun itu (satu pendengar di formnya)
+formKontak.addEventListener("input", (event) => {
+    const aturanKolom = aturan.find((a) => a.kolom === event.target);
+    if (!aturanKolom) return;
+    periksaKolom(aturanKolom);
+    if (sudahCoba) tombolKirim.disabled = !semuaSah();
+});
