@@ -72,13 +72,13 @@ const aturan = [
         kolom: kolomNama,
         galat: document.querySelector("#nama-galat"),
         cek: (nilai) => nilai.trim() !== "",
-        pesan: "Nama belum diisi. Tulis nama lengkap kamu ya."
+        pesan: "Nama belum diisi. Tulis nama lengkap kamu."
     },
     {
         kolom: kolomEmail,
         galat: document.querySelector("#email-galat"),
         cek: (nilai) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(nilai.trim()),
-        pesan: "Format email belum pas. Coba tulis seperti nama@email.com."
+        pesan: "Format email belum sesuai, contoh penulisan: nama@email.com."
     },
     {
         kolom: kolomNim,
@@ -90,7 +90,7 @@ const aturan = [
         kolom: kolomPesan,
         galat: document.querySelector("#pesan-galat"),
         cek: (nilai) => nilai.trim() !== "",
-        pesan: "Pesan belum diisi. Tulis sedikit isi pesan kamu."
+        pesan: "Pesan belum diisi, tulis dahulu pesanmu di sini"
     }
 ];
 
@@ -109,7 +109,7 @@ function periksaKolom(aturanKolom) {
     return sah;
 }
 
-// true kalau semua kolom udah layak
+// true kalau semua kolom udah pas/sesuai
 function semuaSah() {
     return aturan.every((a) => a.cek(a.kolom.value));
 }
