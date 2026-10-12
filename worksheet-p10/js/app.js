@@ -156,3 +156,15 @@ tampilkan();
 
 // SEMENTARA: biar bisa dipanggil lagi dari Console untuk uji B.3
 window.tampilkan = tampilkan;
+
+// P10 Lembar C
+// dua arah JSON: stringify (nilai jadi teks) dan parse (teks jadi nilai)
+const contoh = { judul: "Contoh Proyek", tahun: 2026, selesai: false };
+
+const badan = JSON.stringify(contoh);                // objek jadi teks, siap dikirim atau disimpan
+console.log("C.1 badan:", badan);                    // {"judul":"Contoh Proyek","tahun":2026,"selesai":false}
+console.log("C.1 typeof badan:", typeof badan);      // "string"
+
+const kembali = JSON.parse(badan);                   // teks jadi objek lagi
+console.log("C.1 typeof kembali:", typeof kembali);  // "object"
+console.log("C.1 judul:", kembali.judul);            // "Contoh Proyek"
