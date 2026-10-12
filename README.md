@@ -135,3 +135,23 @@ Dibantu AI:
 
 Dikerjakan sendiri:
 - Kode-kode yang diperlukan di tugas `js/dom.js` (render, filter, validasi form), dan file lain, Lembar A–E, tabel pengamatan di worksheet, tangkapan layar, dan seluruh commit
+
+# Praktikum P10 — JavaScript Asinkron: fetch, Promise, dan JSON
+
+Folder `worksheet-p10/` melanjutkan halaman profil dari P9. Tambahannya: `js/api.js` (lapisan data: alamat ditulis di satu tempat, `fetch`, pemeriksaan `respons.ok`, `async/await` dengan satu `try/catch`, dan fungsi `ambilNotisia` yang diekspor) dan `notisia.json`. Sesuai arahan dosen di kelas, saya memakai berkas `notisia.json` lokal, bukan API publik. Data dari berkas itu digambar sebagai kartu di section "Data dari Berkas JSON" lewat `gambar()` dan `tampilkan()` di `js/app.js`, dengan empat keadaan: memuat, berhasil, gagal, dan kosong. Berkas lain yang ikut ditambah seperlunya: satu `<section id="notisia">` di `profil.html` dan satu blok gaya `#daftar-notisia` di `css/komponen.css`. Tangkapan layar tiap keadaan ada di folder `bukti/`.
+
+## Deklarasi penggunaan AI (Pertemuan 10)
+
+Dibantu AI:
+- Menjelaskan materi 
+- cara penulisan penjelasan di readme 
+- bantu cari sumber masalah gak responsif
+
+Dikerjakan sendiri:
+- kode-kode yng diperlukan di tugas
+- melakukan pengujian
+- pengerjaan tugas
+
+## Catatan untuk P13
+
+Bahan yang perlu dipelajari ulang untuk ujian: pemilihan elemen, render dari data, event delegation, dan pengambilan data dari jaringan.
