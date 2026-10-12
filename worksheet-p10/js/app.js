@@ -1,4 +1,4 @@
-import "./api.js"; // P10: muat lapisan data
+import { ambilNotisia } from "./api.js"; // P10: lapisan data
 // data profil
 // semua isi halaman dikumpulin di sini, jadi kalau ada yang berubah edit file ini
 
@@ -137,3 +137,22 @@ console.log(contohAsli.nama);      // ikut berubah jadi "Nama Uji B"
 
 // profil yang asli gak pernah disentuh
 console.log(profil.nama);          // tetep "Assyifa Nur Fauziyah Jaelani"
+
+// P10 Lembar B
+// pemanggil api.js, ini try/catch kedua: galat ditampilkan di halaman, bukan cuma di Console
+const wadahNotisia = document.querySelector("#daftar-notisia");
+
+async function tampilkan() {
+    wadahNotisia.textContent = "Memuat...";
+    try {
+        const daftar = await ambilNotisia();
+        wadahNotisia.textContent = "Berhasil memuat " + daftar.length + " data.";
+    } catch (galat) {
+        wadahNotisia.textContent = "Gagal memuat data: " + galat.message;
+    }
+}
+
+tampilkan();
+
+// SEMENTARA: biar bisa dipanggil lagi dari Console untuk uji B.3
+window.tampilkan = tampilkan;
