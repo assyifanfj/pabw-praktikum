@@ -138,24 +138,49 @@ console.log(contohAsli.nama);      // ikut berubah jadi "Nama Uji B"
 // profil yang asli gak pernah disentuh
 console.log(profil.nama);          // tetep "Assyifa Nur Fauziyah Jaelani"
 
-// P10 Lembar B
-// pemanggil api.js, ini try/catch kedua: galat ditampilkan di halaman, bukan cuma di Console
+// P10 Lembar B, D
+// pemanggil api.js, ini try/catch kedua, galat ditampilkan di halaman bukan cuma di Console
 const wadahNotisia = document.querySelector("#daftar-notisia");
 
+// D: gambar cuma nyusun elemen dari data, nggak ngambil data sendiri
+function gambar(daftar) {
+    wadahNotisia.textContent = "";                       // kosongin dulu biar kartu nggak numpuk saat digambar ulang
+    if (daftar.length === 0) {                           // keadaan kosong, balasan sah tapi nggak ada butir
+        wadahNotisia.textContent = "Belum ada notisia";
+        return;
+    }
+    daftar.forEach(function (n) {                        // satu kartu per butir data
+        const kartu = document.createElement("article");
+        kartu.className = "kartu";                       // pakai gaya kartu yang sudah ada di CSS
+        const isi = document.createElement("div");
+        isi.className = "kartu__isi";
+        const judul = document.createElement("h3");
+        judul.textContent = n.judul;                     // textContent, bukan innerHTML, karena data dari luar
+        const keterangan = document.createElement("p");
+        keterangan.textContent = n.kategori + " · " + n.tahun;
+        const status = document.createElement("p");
+        status.textContent = n.selesai ? "Selesai" : "Belum selesai";  // selesai itu true/false
+        isi.append(judul, keterangan, status);
+        kartu.append(isi);
+        wadahNotisia.append(kartu);
+    });
+}
+
 async function tampilkan() {
-    wadahNotisia.textContent = "Memuat...";
+    wadahNotisia.textContent = "Memuat..."; // keadaan memuat
     try {
         const daftar = await ambilNotisia();
-        wadahNotisia.textContent = "Berhasil memuat " + daftar.length + " data.";
+        gambar(daftar);                      // berhasil dan kosong sama-sama diurus gambar
     } catch (galat) {
-        wadahNotisia.textContent = "Gagal memuat data: " + galat.message;
+        wadahNotisia.textContent = "Gagal memuat data: " + galat.message;  // keadaan gagal
     }
 }
 
 tampilkan();
 
-// SEMENTARA: biar bisa dipanggil lagi dari Console untuk uji B.3
+// SEMENTARA: biar bisa dipanggil dari Console buat uji
 window.tampilkan = tampilkan;
+window.gambar = gambar;
 
 // P10 Lembar C
 // dua arah JSON: stringify (nilai jadi teks) dan parse (teks jadi nilai)

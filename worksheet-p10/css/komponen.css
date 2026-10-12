@@ -257,3 +257,14 @@ textarea[aria-invalid="true"] {
     border-color: var(--color-danger);
     border-width: 2px;
 }
+
+/* P10: daftar notisia hasil fetch, sama polanya kayak #daftar di P9 */
+#daftar-notisia {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+    gap: var(--space-4);
+}
+
+#daftar-notisia .kartu {
+    height: auto;
+}
