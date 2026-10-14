@@ -9,6 +9,8 @@ const kosong = document.querySelector("#pesan-kosong");
 // bagian tombol filter (induknya aja), diekspor biar events.js bisa pasang pendengar
 export const barisFilter = document.querySelector("#filter");
 
+export const tombolAturUlang = document.querySelector("#atur-ulang");
+
 // bagian form
 export const formKontak = document.querySelector("form");
 const kolomNama = document.querySelector("#nama");

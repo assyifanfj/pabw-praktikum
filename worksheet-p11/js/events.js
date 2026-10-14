@@ -1,9 +1,9 @@
-// P11 Lembar B + C
+// P11 Lembar B + C + D
 // events.js, semua addEventListener dikumpulin di sini
 // isinya cuma nyambungin peristiwa ke fungsi lain, gak nyentuh pemilih halaman langsung
-import { pilihKategori } from "./state.js";
+import { pilihKategori, aturUlang } from "./state.js";
 import {
-    barisFilter, formKontak,
+    barisFilter, tombolAturUlang, formKontak,
     periksaTarget, perbaruiTombolKirim, kirimForm
 } from "./dom.js";
 
@@ -13,6 +13,11 @@ export function pasangPendengar() {
         const tombol = event.target.closest("button");
         if (!tombol) return; // klik di luar tombol, abaikan
         pilihKategori(tombol.dataset.kategori); // cuma ngubah state, render dipanggil di dalam fungsinya
+    });
+
+    // tombol atur ulang (di luar #filter, jadi gak bentrok sama pendengar filter)
+    tombolAturUlang.addEventListener("click", () => {
+        aturUlang();
     });
 
     // pas form dikirim
@@ -27,7 +32,7 @@ export function pasangPendengar() {
         perbaruiTombolKirim();
     });
 
-    // pas pindah dari kolom, kolom kkosong yang ditinggal langsung dapat pesan
+    // pas pindah dari kolom, kolom kosong yang ditinggal langsung dapat pesan
     formKontak.addEventListener("focusout", (event) => {
         periksaTarget(event.target);
     });
