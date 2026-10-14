@@ -1,6 +1,6 @@
-// P11 Lembar B + C + D
-// state.js, satu objek state buat semua keadaan aplikasi + fungsi yang boleh ngubahnya
-// + simpan/muat ke localStorage
+// P11 Lembar B, C, D, E
+// state.js, satu objek state buat semua keadaan aplikasi + fungsi yang boleh ngubah
+// simpan/muat ke localStorage
 import { daftarProyek } from "./data.js";
 import { render } from "./dom.js";
 
@@ -26,12 +26,27 @@ function simpan(state) {
     }
 }
 
-// baca simpanan, null kalau belum pernah disimpan atau isinya rusak
+// buang simpanan, dibungkus try/catch biar kalau storage diblokir halaman tetap jalan
+function buang() {
+    try {
+        localStorage.removeItem(KUNCI);
+    } catch {
+        // diblokir, abaikan aja
+    }
+}
+
+// baca simpanan, null kalau belum pernah disimpan, rusak, atau bentuknya versi lama
 export function muat() {
     try {
-        return JSON.parse(localStorage.getItem(KUNCI));
+        const isi = JSON.parse(localStorage.getItem(KUNCI));
+        if (isi?.versi !== VERSI) {
+            buang();        // bentuk lama (atau belum ada): buang, pakai nilai bawaan
+            return null;
+        }
+        return isi;
     } catch {
-        return null; // simpanan rusak, pakai nilai bawaan
+        buang();            // isi rusak (bukan JSON yang sah): buang, pakai nilai bawaan
+        return null;
     }
 }
 
@@ -59,7 +74,7 @@ export function pilihKategori(nilai) {
 
 // buat tombol atur ulang, hapus simpanan, balik ke nilai bawaan, gambar ulang
 export function aturUlang() {
-    localStorage.removeItem(KUNCI);
+    buang();
     state.kategoriAktif = BAWAAN.kategoriAktif;
     render(state);
 }
