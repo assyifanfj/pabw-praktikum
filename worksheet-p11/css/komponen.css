@@ -268,3 +268,17 @@ textarea[aria-invalid="true"] {
 #daftar-notisia .kartu {
     height: auto;
 }
+
+/* P11: rasio tiap foto galeri ditulis jelas (sama dengan width/height di HTML)
+   biar Chrome nggak ngasih saran "lazy-loaded images should have explicit dimensions" */
+.galeri img[src$="ProyekSem1Assyifa.webp"] {
+    aspect-ratio: 400 / 388;
+}
+
+.galeri img[src$="ProyekSem2CraftFlowAssyifa.webp"] {
+    aspect-ratio: 400 / 523;
+}
+
+.galeri img[src$="KalaAssyifa.webp"] {
+    aspect-ratio: 400 / 269;
+}

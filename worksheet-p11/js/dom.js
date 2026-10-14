@@ -1,28 +1,26 @@
-// P9 Lembar A + B + C + D
-// dom.js ngurusin halaman, datanya diambil dari app.js
-import { daftarProyek } from "./app.js";
+// P11 Lembar B
+// dom.js, semua yang nyentuh halaman ada di sini (pemilih, render, kelas, pesan galat)
+// gak ada addEventListener di sini, itu urusan events.js
 
 // bagian daftar proyek
 const wadah = document.querySelector("#daftar");
 const kosong = document.querySelector("#pesan-kosong");
 
-// bagian tombol filter (induknya aja)
-const barisFilter = document.querySelector("#filter");
+// bagian tombol filter (induknya aja), diekspor biar events.js bisa pasang pendengar
+export const barisFilter = document.querySelector("#filter");
 
 // bagian form
-const formKontak = document.querySelector("form");
+export const formKontak = document.querySelector("form");
 const kolomNama = document.querySelector("#nama");
 const kolomEmail = document.querySelector("#email");
 const kolomNim = document.querySelector("#nim");
 const kolomPesan = document.querySelector("#pesan");
 const tombolKirim = document.querySelector("form button[type='submit']");
 
-// cek semuanya ketemu, kalau ada yang null berarti id-nya salah ketik
-console.log(wadah, kosong, barisFilter, formKontak);
-console.log(kolomNama, kolomEmail, kolomNim, kolomPesan, tombolKirim);
-console.log("jumlah proyek dari app.js:", daftarProyek.length); // harus 3
+// bagian notisia (P10)
+const wadahNotisia = document.querySelector("#daftar-notisia");
 
-// Lembar B
+// Lembar B (P9)
 // bikin satu kartu (li) dari satu proyek
 function buatKartu(proyek) {
     const li = document.createElement("li");
@@ -31,9 +29,9 @@ function buatKartu(proyek) {
     return li;
 }
 
-// Lembar C
+// Lembar C (P9)
 // semua urusan nampilin daftar dikumpulin di sini
-function render(daftar) {
+export function render(daftar) {
     wadah.textContent = ""; // kosongin dulu biar kartu nggak numpuk
     if (daftar.length === 0) { // kalau nggak ada hasil, munculin pesan
         kosong.hidden = false;
@@ -44,29 +42,14 @@ function render(daftar) {
 }
 
 // kasih tanda di tombol yang lagi dipilih
-function tandaiTombolAktif(tombolAktif) {
+export function tandaiTombolAktif(tombolAktif) {
     document.querySelectorAll("#filter button").forEach((tombol) => {
         tombol.classList.toggle("aktif", tombol === tombolAktif);
     });
 }
 
-// satu pendengar di induknya, tombol yang dibuat belakangan tetap kebaca
-barisFilter.addEventListener("click", (event) => {
-    const tombol = event.target.closest("button");
-    if (!tombol) return; // klik di luar tombol, abaikan
-    const kategori = tombol.dataset.kategori;
-    const terpilih = daftarProyek.filter(
-        (proyek) => kategori === "semua" || proyek.kategori === kategori
-    );
-    tandaiTombolAktif(tombol);
-    render(terpilih);
-});
-
-// tampilan awal: semua proyek
-render(daftarProyek);
-
-// Lembar D
-// aturan tiap kolom: cara ngecek nilainya + pesan kalau salah
+// Lembar D (P9)
+// aturan tiap kolom, cara ngecek nilainya + pesan kalau salah
 const aturan = [
     {
         kolom: kolomNama,
@@ -94,7 +77,7 @@ const aturan = [
     }
 ];
 
-// cek satu kolom, tampilkan atau hapus pesannya, balikin true kalau sah
+// cek satu kolom, tampilin atau hapus pesannya, balikin true kalau sah
 function periksaKolom(aturanKolom) {
     const sah = aturanKolom.cek(aturanKolom.kolom.value);
     aturanKolom.galat.textContent = sah ? "" : aturanKolom.pesan;
@@ -111,12 +94,21 @@ function semuaSah() {
     return aturan.every((a) => a.cek(a.kolom.value));
 }
 
-// tombol kirim ditahan dari awal, baru aktif kalau semua kolom sah
-tombolKirim.disabled = !semuaSah();
+// periksa kolom yang jadi target peristiwa, balikin false kalau target bukan kolom yang dijaga
+export function periksaTarget(target) {
+    const aturanKolom = aturan.find((a) => a.kolom === target);
+    if (!aturanKolom) return false;
+    periksaKolom(aturanKolom);
+    return true;
+}
 
-// pas form dikirim (tetap dijaga walau tombolnya sudah ditahan)
-formKontak.addEventListener("submit", (event) => {
-    event.preventDefault(); // baris pertama, biar halaman nggak reload
+// tombol kirim ikut keadaan semua kolom
+export function perbaruiTombolKirim() {
+    tombolKirim.disabled = !semuaSah();
+}
+
+// isi pas form dikirim (preventDefault-nya di events.js)
+export function kirimForm() {
     const hasil = aturan.map((a) => periksaKolom(a)); // semua kolom diperiksa
     const sah = hasil.every(Boolean);
     tombolKirim.disabled = !sah;
@@ -132,19 +124,37 @@ formKontak.addEventListener("submit", (event) => {
     });
     formKontak.reset();
     tombolKirim.disabled = true; // form kosong lagi, tombol ditahan lagi
-});
+}
 
-// pas ngetik di kolom mana pun (satu pendengar di formnya)
-formKontak.addEventListener("input", (event) => {
-    const aturanKolom = aturan.find((a) => a.kolom === event.target);
-    if (!aturanKolom) return;
-    periksaKolom(aturanKolom);
-    tombolKirim.disabled = !semuaSah(); // tombol ikut keadaan semua kolom
-});
+// tombol kirim ditahan dari awal, baru aktif kalau semua kolom sah
+perbaruiTombolKirim();
 
-// pas pindah dari kolom, supaya kolom kosong yang ditinggal langsung dapat pesan
-formKontak.addEventListener("focusout", (event) => {
-    const aturanKolom = aturan.find((a) => a.kolom === event.target);
-    if (!aturanKolom) return;
-    periksaKolom(aturanKolom);
-});
+// P10 Lembar D
+// tulis satu pesan teks di wadah notisia (memuat / gagal / kosong)
+export function pesanNotisia(teks) {
+    wadahNotisia.textContent = teks;
+}
+
+// gambar cuma nyusun elemen dari data, nggak ngambil data sendiri
+export function gambarNotisia(daftar) {
+    wadahNotisia.textContent = "";                       // kosongin dulu biar kartu nggak numpuk saat digambar ulang
+    if (daftar.length === 0) {                           // keadaan kosong, balasan sah tapi nggak ada butir
+        wadahNotisia.textContent = "Belum ada notisia";
+        return;
+    }
+    daftar.forEach(function (n) {                        // satu kartu per butir data
+        const kartu = document.createElement("article");
+        kartu.className = "kartu";                       // pakai gaya kartu yang sudah ada di CSS
+        const isi = document.createElement("div");
+        isi.className = "kartu__isi";
+        const judul = document.createElement("h3");
+        judul.textContent = n.judul;                     // textContent, bukan innerHTML, karena data dari luar
+        const keterangan = document.createElement("p");
+        keterangan.textContent = n.kategori + " · " + n.tahun;
+        const status = document.createElement("p");
+        status.textContent = n.selesai ? "Selesai" : "Belum selesai";  // selesai itu true/false
+        isi.append(judul, keterangan, status);
+        kartu.append(isi);
+        wadahNotisia.append(kartu);
+    });
+}

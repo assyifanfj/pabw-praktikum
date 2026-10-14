@@ -1,195 +1,23 @@
-import { ambilNotisia } from "./api.js"; // P10: lapisan data
-// data profil
-// semua isi halaman dikumpulin di sini, jadi kalau ada yang berubah edit file ini
+// P11 Lembar B
+// app.js, cuma perakit, ngimpor berkas lain terus ngejalanin aplikasinya
+import { state } from "./state.js";
+import { pasangPendengar } from "./events.js";
+import { render, gambarNotisia, pesanNotisia } from "./dom.js";
+import { ambilNotisia } from "./api.js"; // P10: lapisan data masuk, gak diubah
 
-export const profil = {
-    nama: "Assyifa Nur Fauziyah Jaelani",
-    peran: "Mahasiswa Informatika UII dan awardee Beasiswa OSC",
-    keahlian: ["UI/UX Design", "Copywriting", "HTML & CSS", "Python", "Java"],
-};
+// bagian proyek
+pasangPendengar();          // pasang semua pendengar peristiwa
+render(state.daftarProyek); // tampilan awalnya semua proyek
 
-const jumlahProyek = 3;
-
-let pilihanAktif = "semua";
-
-// cek tipe datanya
-console.log(typeof profil.nama);   // "string"
-console.log(typeof jumlahProyek);  // "number"
-console.log(typeof belumDibuat);   // "undefined", variabelnya emang belum ada
-
-const kalimat = `Nama saya ${profil.nama}, dan saya belajar ${profil.keahlian.length} hal.`;
-console.log(kalimat);
-console.log(`Sampai sekarang saya sudah bikin ${jumlahProyek} proyek.`);
-console.log(`Pilihan aktif: ${pilihanAktif}`);
-
-const kota = profil.alamat?.kota ?? "belum diisi";
-console.log(`Kota: ${kota}`);
-
-// bandingin nilai sekaligus tipenya
-console.log(jumlahProyek === 3);   // true
-console.log(jumlahProyek === "3"); // false
-
-// Lembar C
-// fungsi murni/hasilnya cuma bergantung ke argumen, nggak ngubah apa pun di luar fungsi
-
-// 1. nyusun kalimat perkenalan dari satu object
-function buatPerkenalan({ nama, peran }) {
-    return `${nama} — ${peran}`;
-}
-
-// 2. ngerapiin daftar keahlian jadi satu baris teks
-function formatKeahlian(daftar) {
-    return daftar.join(" · ");
-}
-
-// tiap fungsi dipanggil 3x dengan argumen berbeda
-console.log(buatPerkenalan(profil));
-console.log(buatPerkenalan({ nama: "Ayu", peran: "Mahasiswa Desain" }));
-console.log(buatPerkenalan({ nama: "Budi", peran: "Pengembang Web" }));
-
-console.log(formatKeahlian(profil.keahlian));
-console.log(formatKeahlian(["Figma", "Canva"]));
-console.log(formatKeahlian(["JavaScript"]));
-
-
-// Lembar D
-// data proyek: array of object, tiap isinya satu proyek
-// (selesai: true semua karena ketiganya udah selesai, makanya ada kategori biar filter-nya kelihatan hasilnya)
-export const daftarProyek = [
-    { judul: "Desain Antarmuka Sem 1", kategori: "Proyek UI/UX", tahun: 2025, selesai: true },
-    { judul: "CraftFlow", kategori: "Proyek Aplikasi Desktop Java Scene Builder", tahun: 2026, selesai: true },
-    { judul: "Kala", kategori: "Lomba UI/UX", tahun: 2026, selesai: true },
-];
-
-// cara baca nilai: titik buat label, kurung siku buat urutan (mulai dari 0)
-console.log(daftarProyek[0]);          // object pertama
-console.log(daftarProyek[0].judul);    // "Desain Antarmuka Sem 1"
-console.log(profil["nama"]);           // sama kayak profil.nama
-
-// console.table, seluruh isi tampil sebagai tabel
-console.table(profil.keahlian);
-console.table(daftarProyek);
-
-// filter buat nyaring, hasilnya array baru yang bisa lebih pendek
-const selesai = daftarProyek.filter((proyek) => proyek.selesai);
-console.table(selesai);
-
-const proyekUIUX = daftarProyek.filter((proyek) => proyek.kategori === "Proyek UI/UX");
-console.table(proyekUIUX);
-
-// find buat ngambil satu isi pertama yang cocok, kalau nggak ada hasilnya undefined
-const craftflow = daftarProyek.find((proyek) => proyek.judul === "CraftFlow");
-console.log(craftflow);
-
-const tidakAda = daftarProyek.find((proyek) => proyek.judul === "Katalog Produk");
-console.log(tidakAda); // undefined, karena proyek itu memang nggak ada
-
-// map buat ngubah tiap isi, panjang array hasilnya sama kayak array asal
-const daftarJudul = daftarProyek.map((proyek) => proyek.judul);
-console.log(daftarJudul);
-console.log(daftarJudul.length === daftarProyek.length); // true
-
-// sort pakai salinan [...array] soalnya sort ngubah array aslinya
-const urutTahunBaru = [...daftarProyek].sort((a, b) => b.tahun - a.tahun);
-console.table(urutTahunBaru);
-
-// cek, urutan daftarProyek yang asli harus tetap sama
-console.log(daftarProyek.map((proyek) => proyek.judul)); // urutan asli, nggak berubah
-
-// Lembar E
-// Kasus 1: undefined pada nilai yang seharusnya ada
-// sebabnya label ketulis salah (nma), padahal di objek profil labelnya nama
-console.log(profil.nama);
-
-// Kasus 3: nilai dari kolom isian selalu teks
-// kolom uji dibuat lewat kode dan nggak dipasang ke halaman, jadi form aslinya aman
-const kolomUji = document.createElement("input");
-kolomUji.value = "10";
-// sebelum diperbaiki: kolomUji.value + 1 hasilnya "101" (teks disambung, bukan dijumlah)
-const hasilJumlah = Number(kolomUji.value) + 1;
-console.log(hasilJumlah);          // 11
-console.log(typeof hasilJumlah);   // "number"
-
-// Kasus 2: Cannot read properties of null
-// soalnya querySelector(".taglin") nggak nemu elemen, class aslinya .tagline, jadi hasilnya null
-const tagline = document.querySelector(".tagline");
-
-// dijaga pakai if supaya kalau elemennya nggak ada, skrip nggak berhenti
-if (tagline !== null) {
-    console.log(tagline.textContent);
-} else {
-    console.error("Elemen .tagline tidak ditemukan di profil.html");
-}
-
-// Lembar F.3
-// pakai objek contoh biar data profil yang asli nggak ikut berubah
-const contohAsli = { ...profil };
-
-// salinan yang bener pakai { ...objek }, hasilnya objek baru
-const salinanBenar = { ...contohAsli };
-salinanBenar.nama = "Nama Uji A";
-console.log(contohAsli.nama);      // tetep "Assyifa Nur Fauziyah Jaelani"
-
-// salinan yang salah tanpa titik-tiga, cuma nyalin penunjuknya, objeknya tetap satu
-const salinanSalah = contohAsli;
-salinanSalah.nama = "Nama Uji B";
-console.log(contohAsli.nama);      // ikut berubah jadi "Nama Uji B"
-
-// profil yang asli gak pernah disentuh
-console.log(profil.nama);          // tetep "Assyifa Nur Fauziyah Jaelani"
-
-// P10 Lembar B, D
-// pemanggil api.js, ini try/catch kedua, galat ditampilkan di halaman bukan cuma di Console
-const wadahNotisia = document.querySelector("#daftar-notisia");
-
-// D: gambar cuma nyusun elemen dari data, nggak ngambil data sendiri
-function gambar(daftar) {
-    wadahNotisia.textContent = "";                       // kosongin dulu biar kartu nggak numpuk saat digambar ulang
-    if (daftar.length === 0) {                           // keadaan kosong, balasan sah tapi nggak ada butir
-        wadahNotisia.textContent = "Belum ada notisia";
-        return;
-    }
-    daftar.forEach(function (n) {                        // satu kartu per butir data
-        const kartu = document.createElement("article");
-        kartu.className = "kartu";                       // pakai gaya kartu yang sudah ada di CSS
-        const isi = document.createElement("div");
-        isi.className = "kartu__isi";
-        const judul = document.createElement("h3");
-        judul.textContent = n.judul;                     // textContent, bukan innerHTML, karena data dari luar
-        const keterangan = document.createElement("p");
-        keterangan.textContent = n.kategori + " · " + n.tahun;
-        const status = document.createElement("p");
-        status.textContent = n.selesai ? "Selesai" : "Belum selesai";  // selesai itu true/false
-        isi.append(judul, keterangan, status);
-        kartu.append(isi);
-        wadahNotisia.append(kartu);
-    });
-}
-
-async function tampilkan() {
-    wadahNotisia.textContent = "Memuat..."; // keadaan memuat
+// bagian notisia (P10): ambil data dari api.js, hasilnya dioper ke dom.js buat digambar
+async function muatNotisia() {
+    pesanNotisia("Memuat...");                          // keadaan memuat
     try {
         const daftar = await ambilNotisia();
-        gambar(daftar);                      // berhasil dan kosong sama-sama diurus gambar
+        gambarNotisia(daftar);                          // berhasil dan kosong sama-sama diurus gambarNotisia
     } catch (galat) {
-        wadahNotisia.textContent = "Gagal memuat data: " + galat.message;  // keadaan gagal
+        pesanNotisia("Gagal memuat data: " + galat.message); // keadaan gagal
     }
 }
 
-tampilkan();
-
-// SEMENTARA: biar bisa dipanggil dari Console buat uji
-window.tampilkan = tampilkan;
-window.gambar = gambar;
-
-// P10 Lembar C
-// dua arah JSON: stringify (nilai jadi teks) dan parse (teks jadi nilai)
-const contoh = { judul: "Contoh Proyek", tahun: 2026, selesai: false };
-
-const badan = JSON.stringify(contoh);                // objek jadi teks, siap dikirim atau disimpan
-console.log("C.1 badan:", badan);                    // {"judul":"Contoh Proyek","tahun":2026,"selesai":false}
-console.log("C.1 typeof badan:", typeof badan);      // "string"
-
-const kembali = JSON.parse(badan);                   // teks jadi objek lagi
-console.log("C.1 typeof kembali:", typeof kembali);  // "object"
-console.log("C.1 judul:", kembali.judul);            // "Contoh Proyek"
+muatNotisia();
