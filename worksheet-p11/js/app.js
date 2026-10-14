@@ -1,6 +1,6 @@
 // P11 Lembar B, D
 // app.js, cuma perakit, ngimpor berkas lain terus ngejalanin aplikasinya
-import { state, pulihkan, muat } from "./state.js";
+import { state, pulihkan } from "./state.js";
 import { pasangPendengar } from "./events.js";
 import { render, gambarNotisia, pesanNotisia } from "./dom.js";
 import { ambilNotisia } from "./api.js"; // P10: lapisan data masuk, gak diubah
@@ -22,8 +22,3 @@ async function muatNotisia() {
 }
 
 muatNotisia();
-
-// SEMENTARA: biar state bisa dilihat dari Console
-window.state = state;
-window.render = render;
-window.muat = muat;
