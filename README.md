@@ -154,4 +154,4 @@ Dikerjakan sendiri:
 
 ## Catatan untuk P13
 
-Bahan yang perlu dipelajari ulang untuk ujian: pemilihan elemen, render dari data, event delegation, dan pengambilan data dari jaringan.
+Bahan yang perlu dipelajari ulang untuk ujian, pemilihan elemen, render dari data, event delegation, dan pengambilan data dari jaringan.

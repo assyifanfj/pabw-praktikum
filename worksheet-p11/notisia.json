@@ -1,0 +1,26 @@
+[
+    {
+    "id": 1,
+    "judul": "Desain Antarmuka Sem 1",
+    "kategori": "Proyek UI/UX",
+    "tahun": 2025,
+    "selesai": true,
+    "tautan": null
+    },
+    {
+    "id": 2,
+    "judul": "CraftFlow",
+    "kategori": "Proyek Aplikasi Desktop",
+    "tahun": 2026,
+    "selesai": true,
+    "tautan": null
+    },
+    {
+    "id": 3,
+    "judul": "Kala",
+    "kategori": "Lomba UI/UX",
+    "tahun": 2026,
+    "selesai": true,
+    "tautan": null
+    }
+]

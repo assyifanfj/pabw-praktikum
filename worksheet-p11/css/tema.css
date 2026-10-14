@@ -1,0 +1,51 @@
+/* Tema gelap otomatis */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0F172A;
+    --color-fg: #E2E8F0;
+    --color-surface: #1E293B;
+    --color-border: #334155;
+    --color-primary: #7DA9F7;
+    --color-danger: #FF8A8A;
+    --color-focus: #FFC000;
+    --shadow-1: 0 1px 3px rgba(0, 0, 0, 0.45);
+  }
+}
+
+/* Pengalihan Manual (checkbox + :has) */
+/* Sembunyikan checkbox bawaan browser */
+.pengalih-tema {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Tampilan tombol pengalih */
+.tombol-tema {
+  display: inline-block;
+  cursor: pointer;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm, 4px);
+  background-color: var(--color-surface);
+  color: var(--color-fg);
+  font-size: 0.875rem;
+  user-select: none;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.tombol-tema:hover {
+  border-color: var(--color-primary);
+}
+
+/* Jika checkbox dicentang manual, ubah variabel menjadi tema gelap */
+:root:has(#tema:checked) {
+  --color-bg: #0F172A;
+  --color-fg: #E2E8F0;
+  --color-surface: #1E293B;
+  --color-border: #334155;
+  --color-primary: #7DA9F7;
+  --color-danger: #FF8A8A;
+  --color-focus: #FFC000;
+  --shadow-1: 0 1px 3px rgba(0, 0, 0, 0.45);
+}
