@@ -1,10 +1,9 @@
-// P11 Lembar B
+// P11 Lembar B + C
 // events.js, semua addEventListener dikumpulin di sini
 // isinya cuma nyambungin peristiwa ke fungsi lain, gak nyentuh pemilih halaman langsung
-import { state, pilihKategori } from "./state.js";
+import { pilihKategori } from "./state.js";
 import {
     barisFilter, formKontak,
-    render, tandaiTombolAktif,
     periksaTarget, perbaruiTombolKirim, kirimForm
 } from "./dom.js";
 
@@ -12,14 +11,8 @@ export function pasangPendengar() {
     // satu pendengar di induk filter, tombol yang dibuat belakangan tetap kebaca
     barisFilter.addEventListener("click", (event) => {
         const tombol = event.target.closest("button");
-        if (!tombol) return; // klik di luar tombol, abaiin
-        const kategori = tombol.dataset.kategori;
-        pilihKategori(kategori); // state diubah lewat fungsi pengubah
-        const terpilih = state.daftarProyek.filter(
-            (proyek) => kategori === "semua" || proyek.kategori === kategori
-        );
-        tandaiTombolAktif(tombol);
-        render(terpilih);
+        if (!tombol) return; // klik di luar tombol, abaikan
+        pilihKategori(tombol.dataset.kategori); // cuma ngubah state, render dipanggil di dalam fungsinya
     });
 
     // pas form dikirim
@@ -34,7 +27,7 @@ export function pasangPendengar() {
         perbaruiTombolKirim();
     });
 
-    // pas pindah dari kolom, kolom kosong yang ditinggal langsung dapat pesan
+    // pas pindah dari kolom, kolom kkosong yang ditinggal langsung dapat pesan
     formKontak.addEventListener("focusout", (event) => {
         periksaTarget(event.target);
     });

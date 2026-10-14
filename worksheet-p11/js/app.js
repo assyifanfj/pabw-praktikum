@@ -6,8 +6,8 @@ import { render, gambarNotisia, pesanNotisia } from "./dom.js";
 import { ambilNotisia } from "./api.js"; // P10: lapisan data masuk, gak diubah
 
 // bagian proyek
-pasangPendengar();          // pasang semua pendengar peristiwa
-render(state.daftarProyek); // tampilan awalnya semua proyek
+pasangPendengar(); // pasang semua pendengar peristiwa
+render(state); // tampilan awalnya semua proyek
 
 // bagian notisia (P10): ambil data dari api.js, hasilnya dioper ke dom.js buat digambar
 async function muatNotisia() {
@@ -21,3 +21,7 @@ async function muatNotisia() {
 }
 
 muatNotisia();
+
+// SEMENTARA: biar state bisa dilihat dari Console
+window.state = state;
+window.render = render;

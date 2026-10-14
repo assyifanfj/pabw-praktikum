@@ -29,23 +29,32 @@ function buatKartu(proyek) {
     return li;
 }
 
-// Lembar C (P9)
-// semua urusan nampilin daftar dikumpulin di sini
-export function render(daftar) {
-    wadah.textContent = ""; // kosongin dulu biar kartu nggak numpuk
-    if (daftar.length === 0) { // kalau nggak ada hasil, munculin pesan
+// Lembar C (P11)
+// nyaring proyek berdasarkan kategori yang lagi aktif di state (bukan dari tombol yang diklik)
+function saring(state) {
+    return state.daftarProyek.filter(
+        (proyek) => state.kategoriAktif === "semua" || proyek.kategori === state.kategoriAktif
+    );
+}
+
+// kasih tanda di tombol yang kategorinya sama dengan yang aktif di state
+function tandaiTombolAktif(kategoriAktif) {
+    document.querySelectorAll("#filter button").forEach((tombol) => {
+        tombol.classList.toggle("aktif", tombol.dataset.kategori === kategoriAktif);
+    });
+}
+
+// render nerima seluruh state, tampilannya digambar dari situ
+export function render(state) {
+    tandaiTombolAktif(state.kategoriAktif); // tombol aktif juga ngikut state
+    wadah.textContent = ""; // 1. kosongin dulu biar kartu nggak numpuk
+    const tampil = saring(state); // dari state, bukan dari argumen
+    if (tampil.length === 0) { // 2. keadaan kosong, munculin pesan
         kosong.hidden = false;
         return;
     }
     kosong.hidden = true;
-    daftar.forEach((proyek) => wadah.append(buatKartu(proyek)));
-}
-
-// kasih tanda di tombol yang lagi dipilih
-export function tandaiTombolAktif(tombolAktif) {
-    document.querySelectorAll("#filter button").forEach((tombol) => {
-        tombol.classList.toggle("aktif", tombol === tombolAktif);
-    });
+    tampil.forEach((proyek) => wadah.append(buatKartu(proyek))); // 3. isi ulang
 }
 
 // Lembar D (P9)
