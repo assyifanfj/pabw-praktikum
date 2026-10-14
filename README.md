@@ -162,10 +162,12 @@ Perubahan di luar worksheet
 Menambahkan tiga aturan aspect ratio di akhir css/komponen.css untuk foto galeri. Soalnya Panel Issues di Chrome nampilin saran "Lazy-loaded images should have explicit dimensions" untuk tiga foto yang memakai loading="lazy", karena ukurannya ditimpa CSS (width: 100%; height: auto). Rasio yang ditulis sama dengan width/height di HTML jadi tampilan gak berubah. profil.html gak diubah.
 
 Dibantu AI:
-- [isi dengan yang benar-benar dibantu AI]
+- bantuan arahan pengisian README
 
 Dikerjakan sendiri:
-- [isi dengan yang kamu kerjakan sendiri]
+- kode-kode yng diperlukan di tugas
+- melakukan pengujian
+- pengerjaan tugas
 
 ## Versi Node.js (F.2)
 
