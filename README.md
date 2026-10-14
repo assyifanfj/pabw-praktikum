@@ -155,3 +155,8 @@ Dikerjakan sendiri:
 ## Catatan untuk P13
 
 Bahan yang perlu dipelajari ulang untuk ujian, pemilihan elemen, render dari data, event delegation, dan pengambilan data dari jaringan.
+
+# Praktikum P11 - Modul, State, dan Penyimpanan Klien
+
+Perubahan di luar worksheet
+Menambahkan tiga aturan aspect ratio di akhir css/komponen.css untuk foto galeri. Soalnya Panel Issues di Chrome nampilin saran "Lazy-loaded images should have explicit dimensions" untuk tiga foto yang memakai loading="lazy", karena ukurannya ditimpa CSS (width: 100%; height: auto). Rasio yang ditulis sama dengan width/height di HTML jadi tampilan gak berubah. profil.html gak diubah.
