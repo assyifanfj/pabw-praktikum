@@ -1,0 +1,167 @@
+/* B.1 Kerangka halaman utama (grid) */
+.page {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100dvh;
+}
+
+/* B.2 Navbar dan isi */
+/* Header & navbar — Disesuaikan agar Nama & Tagline tersusun rapi di bawah tombol tema */
+header.kepala {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding-block: var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.tombol-tema {
+    cursor: pointer;
+}
+
+header.kepala h1 {
+    font-size: var(--text-3xl);
+    line-height: 1.15;
+}
+
+header.kepala .tagline {
+    font-size: var(--text-md);
+    color: var(--color-fg);
+    max-width: 100%;
+}
+
+.navbar {
+    display: flex;
+    gap: var(--space-4);
+    align-items: center;
+    width: 100%;
+}
+
+nav ul {
+    display: flex;
+    gap: var(--space-4);
+    list-style: none;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+@media (min-width: 64rem) {
+    header.kepala {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        grid-template-areas:
+            "tema tema"
+            "judul menu"
+            "slogan slogan";
+        column-gap: var(--space-6);
+        row-gap: var(--space-2);
+        align-items: start;
+    }
+
+    .tombol-tema {
+        grid-area: tema;
+        justify-self: start;
+    }
+
+    header.kepala h1 {
+        grid-area: judul;
+    }
+
+    header.kepala .tagline {
+        grid-area: slogan;
+    }
+
+    .navbar {
+        grid-area: menu;
+        align-self: end;
+        justify-content: flex-end;
+        width: auto;
+    }
+
+    nav ul {
+        justify-content: flex-end;
+    }
+}
+
+/* Jarak antar isi di dalam tiap bagian pakai gap */
+main section,
+main article,
+main aside {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+/* Tata letak area isi (grid dua kolom, sidebar & konten utama) */
+.isi {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+}
+
+@media (min-width: 48rem) {
+    .isi {
+        grid-template-columns: 16rem 1fr;
+        align-items: start;
+    }
+}
+
+.konten {
+    display: flex;
+    flex-direction: column;
+    gap: var(--section-gap);
+    min-width: 0;
+}
+
+main {
+    padding-block: var(--space-6) calc(var(--space-6) * 2);
+}
+
+/* Kaki halaman (footer) */
+footer.kaki {
+    padding-block: var(--space-4);
+    border-top: 1px solid var(--color-border);
+    color: var(--color-fg);
+    font-size: var(--text-sm);
+}
+
+/* D. Penempatan: span dan area bernama */
+
+/* D.1 Penempatan Menggunakan Span */
+@media (min-width: 53rem) {
+    .kartu-sorotan {
+        grid-column: span 2;
+    }
+}
+
+/* D.2 Penempatan Menggunakan Area Bernama */
+.isi-area {
+    grid-template-areas:
+        "sisi"
+        "utama";
+}
+
+@media (min-width: 48rem) {
+    .isi-area {
+        grid-template-areas:
+            "sisi utama";
+    }
+}
+
+.isi-area > :first-child {
+    grid-area: sisi;
+}
+
+.isi-area > :last-child {
+    grid-area: utama;
+}

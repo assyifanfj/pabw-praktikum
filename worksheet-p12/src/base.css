@@ -1,0 +1,124 @@
+/* E.1 Reset dikit dan box-sizing */
+*, *::before, *::after {
+    box-sizing: border-box; 
+}
+
+* {
+    margin: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* E.2 & E.3 Tipografi dan warna dasar halaman */
+html {
+    font-size: 100%;
+}
+
+body {
+    font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+    font-size: var(--text-md);
+    line-height: 1.6;
+    color: var(--color-fg);
+    background-color: var(--color-bg);
+    padding: var(--space-4);
+}
+
+h1 {
+    font-size: var(--text-3xl);
+    line-height: 1.15;
+}
+
+h2 {
+    font-size: var(--text-xl);
+    line-height: 1.25;
+}
+
+h3 {
+    font-size: var(--text-md);
+    line-height: 1.4;
+}
+
+main p {
+    max-width: 100%;
+}
+
+/* Link dan aksesibilitas */
+a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+a:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+}
+
+.lewati {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    background: var(--color-primary, #000);
+    color: #fff;
+    padding: var(--space-2, 0.5rem) var(--space-4, 1rem);
+    z-index: 9999;
+    text-decoration: none;
+    border-radius: var(--radius-sm, 4px);
+}
+
+.lewati:focus {
+    top: 1rem;
+    left: 1rem;
+}
+
+/* Styling Tabel Kegiatan */
+table {
+    width: 100%;
+    border-spacing: 0;
+    background-color: var(--color-surface, #ffffff);
+    border-radius: var(--radius-md, 8px);
+    border: 1px solid var(--color-border, #e5e7eb);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+caption {
+    font-weight: 600;
+    padding-bottom: var(--space-2, 0.5rem);
+    text-align: left;
+    color: var(--color-fg);
+}
+
+th, td {
+    padding: var(--space-3, 0.75rem) var(--space-4, 1rem);
+    text-align: left;
+    border-bottom: 1px solid var(--color-border, #e5e7eb);
+}
+
+thead th {
+    background-color: var(--color-primary, #334155);
+    color: #ffffff;
+    font-weight: 600;
+    border-bottom: none;
+}
+
+/* KUNCI: Membulatkan sudut header biru secara langsung */
+thead tr:first-child th:first-child {
+    border-top-left-radius: var(--radius-md, 8px);
+}
+
+thead tr:first-child th:last-child {
+    border-top-right-radius: var(--radius-md, 8px);
+}
+
+tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+tbody tr:last-child td,
+tbody tr:last-child th {
+    border-bottom: none;
+}
