@@ -10,9 +10,9 @@ export const profil = {
 
 // data proyek, array of object, tiap isinya satu proyek
 export const daftarProyek = [
-    { judul: "Desain Antarmuka Sem 1", kategori: "Proyek UI/UX", tahun: 2025, selesai: true },
-    { judul: "CraftFlow", kategori: "Proyek Aplikasi Desktop Java Scene Builder", tahun: 2026, selesai: true },
-    { judul: "Kala", kategori: "Lomba UI/UX", tahun: 2026, selesai: true },
+    { id: 1, judul: "Desain Antarmuka Sem 1", kategori: "Proyek UI/UX", tahun: 2025, selesai: true },
+    { id: 2, judul: "CraftFlow", kategori: "Proyek Aplikasi Desktop Java Scene Builder", tahun: 2026, selesai: true },
+    { id: 3, judul: "Kala", kategori: "Lomba UI/UX", tahun: 2026, selesai: true },
 ];
 
 // fungsi murni (P8), hasilnya cuma bergantung ke argumen
