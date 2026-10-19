@@ -183,7 +183,7 @@ Folder `worksheet-p12/` memindahkan halaman profil dari P11 ke proyek Vue + Vite
 
 - `node -v`: v24.21.0
 - `npm -v`: 11.19.0
-- Port `npm run dev`: [isi, mis. 5173]
+- Port `npm run dev`: 5174
 
 ## Ukuran sebelum dan sesudah build (F.3)
 
