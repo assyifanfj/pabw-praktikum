@@ -1,10 +1,12 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import KepalaProfil from './components/KepalaProfil.vue'
 import TombolFilter from './components/TombolFilter.vue'
 import DaftarProyek from './components/DaftarProyek.vue'
 import FormKontak from './components/FormKontak.vue'
 import { ambilNotisia } from './api.js'
+import { state } from './state.js'
+import { muat, simpan, aturUlang } from './simpanan.js'
 
 // P12 Lembar D, data identitas yang dikirim ke KepalaProfil lewat props
 const identitas = {
@@ -25,6 +27,27 @@ onMounted(async () => {
     pesanNotisia.value = 'Gagal memuat data: ' + galat.message            // keadaan gagal
   }
 })
+
+// P12 Lembar E langkah 3, simpanan tersambung lewat dua kait dan satu tombol
+// onMounted = baca simpanan satu kali, pas halaman pertama dipasang
+onMounted(() => {
+  const isi = muat()                                  // VERSI diperiksa di dalam muat()
+  if (!isi) return                                    // belum ada simpanan, pakai nilai bawaan
+  // cek kategori dari simpanan beneran ada (kategoriSah dari P11), biar gak nyangkut di kategori yang gak ada
+  const sah = isi.kategoriAktif === 'semua' ||
+    state.daftarProyek.some((proyek) => proyek.kategori === isi.kategoriAktif)
+  if (sah) state.kategoriAktif = isi.kategoriAktif    // pulihin pilihan terakhir
+})
+
+// watch = nulis simpanan setiap kali state berubah (deep biar isi di dalam objek juga kepantau)
+watch(state, (nilai) => simpan(nilai), { deep: true })
+
+// tombol atur ulang dari P11: hapus simpanan, balik ke "semua", tulis ulang nilai bawaan
+function aturUlangPilihan() {
+  aturUlang()
+  state.kategoriAktif = 'semua'
+  simpan(state)
+}
 </script>
 
 <template>
@@ -102,7 +125,7 @@ onMounted(async () => {
         <section id="karya">
           <h2>Karya saya</h2>
           <TombolFilter />
-          <button type="button" id="atur-ulang" class="btn">Atur ulang pilihan</button>
+          <button type="button" id="atur-ulang" class="btn" @click="aturUlangPilihan">Atur ulang pilihan</button>
 
           <DaftarProyek />
         </section>
