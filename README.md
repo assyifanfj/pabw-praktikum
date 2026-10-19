@@ -174,3 +174,31 @@ Dikerjakan sendiri:
 
 - `node -v`: [v24.21.0]
 - `npm -v`: [11.19.0]
+
+# Praktikum P12 — Build Tooling, npm, dan Vue
+
+Folder `worksheet-p12/` memindahkan halaman profil dari P11 ke proyek Vue + Vite yang dibuat di folder kosong. CSS (enam berkas), data, dan `api.js` dipakai apa adanya. Halaman dipecah jadi empat komponen: `KepalaProfil` (menerima props `profil`), `TombolFilter`, `DaftarProyek`, dan `FormKontak`. State memakai `reactive()`, simpanan lewat `onMounted` + `watch` + tombol atur ulang. Hasil build ada di `dist/` (tidak di-commit) dan dicoba lewat `npm run preview`.
+
+## Versi perkakas (A.1)
+
+- `node -v`: v24.21.0
+- `npm -v`: 11.19.0
+- Port `npm run dev`: [isi, mis. 5173]
+
+## Ukuran sebelum dan sesudah build (F.3)
+
+| | Sebelum build (dev) | Sesudah build (preview) |
+| :--- | :--- | :--- |
+| Ukuran yang dikirim | 2,0 MB | 432 kB |
+| Jumlah berkas | [31] | [7] |
+
+## Deklarasi penggunaan AI (Pertemuan 12)
+
+Dibantu AI:
+- bantu menjelaskan materi
+- bantu membuat apa yang perlu diisi di readme 
+
+Dikerjakan sendiri:
+- kode-kode yang diperlukan di tugas
+- melakukan pengujian
+- pengerjaan tugas
