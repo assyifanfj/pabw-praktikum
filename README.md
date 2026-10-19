@@ -163,6 +163,7 @@ Menambahkan tiga aturan aspect ratio di akhir css/komponen.css untuk foto galeri
 
 Dibantu AI:
 - bantuan arahan pengisian README
+- bantuan biar lebih ngerti 
 
 Dikerjakan sendiri:
 - kode-kode yng diperlukan di tugas
